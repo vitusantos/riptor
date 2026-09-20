@@ -118,7 +118,51 @@
             font-size: 14px;
             border-top: 1px solid #333;
         }
-    </style>
+.grid-ligas {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .card-liga {
+            background-color: var(--cor-painel);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100px;
+        }
+
+        .card-liga:hover {
+            border-color: var(--cor-destaque);
+            box-shadow: 0 0 15px rgba(255, 51, 51, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .card-liga span {
+            color: var(--cor-texto);
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        
+        .card-liga img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+            display: none; /* Mude para 'block' quando adicionar as imagens das logos */
+        }
+     </style>
 </head>
 <body>
 
@@ -128,18 +172,66 @@
 	<h3>#BORNTODOMINATE</h3>
         <nav>
             <a href="#hero">Início</a>
+	    <a href="#agenda">Agenda</a>
             <a href="#pilotos">Pilotos</a>
             <a href="#simuladores">Simuladores</a>
             <a href="#contato">Contato</a>
         </nav>
     </header>
 
-    <!-- Área de Destaque -->
+<!-- Área de Destaque -->
     <section id="hero" class="hero">
-        <h2>Estamos na Pista</h2>
-        <p>Competição de alto nível no automobilismo virtual.</p>
+        <h2>Instinto Predatório nas Pistas</h2>
+        <p style="max-width: 800px; margin: 0 auto 30px auto; line-height: 1.6;">
+            A <strong>Riptor esports</strong> é uma força predatória no cenário do automobilismo virtual de alta performance. 
+            Competindo no mais alto nível em simuladores consagrados 
+            nossa equipe é a síntese exata entre inovação tecnológica e precisão milimétrica. Nas pistas, unimos estratégia 
+            implacável a uma identidade visual agressiva e marcante, dominando cada traçado com a ferocidade de quem corre para vencer.
+        </p>
         <a href="#pilotos" class="btn">Conheça a Equipe</a>
     </section>
+
+<!-- Seção de Campeonatos e Agenda -->
+    <section id="agenda" class="secao" style="background-color: #121212;">
+        
+        <!-- Bloco de Ligas -->
+        <div style="margin-bottom: 70px;">
+            <h3>Ligas Oficiais</h3>
+            <p style="color: #aaa; margin-bottom: 40px; font-size: 18px;">Competições em que a Riptor esports marca presença no grid.</p>
+            
+            <div class="grid-ligas">
+                <a href="https://ligaletsgo.com.br/" target="_blank" class="card-liga">
+                    <!-- <img src="logo-letsgo.png" alt="Liga Let's Go"> -->
+                    <span>Liga Let's Go</span>
+                </a>
+
+                <a href="https://nibsports.com/" target="_blank" class="card-liga">
+                    <!-- <img src="logo-nib.png" alt="NIB Sports"> -->
+                    <span>NIB Sports</span>
+                </a>
+
+                <a href="https://www.ligaveteranos.com.br/" target="_blank" class="card-liga">
+                    <!-- <img src="logo-veteranos.png" alt="Liga Veteranos"> -->
+                    <span>Liga Veteranos</span>
+                </a>
+
+                <a href="https://ligamultitap.com.br/" target="_blank" class="card-liga">
+                    <!-- <img src="logo-multitap.png" alt="Liga Multitap"> -->
+                    <span>Liga Multitap</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Bloco do Calendário (Google Agenda) -->
+        <h3>Próximas Corridas</h3>
+        <div style="max-width: 800px; margin: 0 auto; border-radius: 8px; overflow: hidden; box-shadow: 0 0 15px rgba(255, 51, 51, 0.2);">
+            
+            <!-- Cole o código iframe do seu Google Agenda substituindo a linha abaixo -->
+            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=America%2FAraguaina&showPrint=0&mode=WEEK&showTabs=0&showNav=0&showDate=0&showCalendars=0&showTz=0&title=Riptor%20na%20Pista&showTitle=0&src=dml0b3JzYW50b3Njb250QGdtYWlsLmNvbQ&color=%23039be5" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+            
+        </div>
+    </section>
+
 
     <!-- Seção de Pilotos -->
     <section id="pilotos" class="secao">
