@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riptor esports | Automobilismo Virtual</title>
+    <style>
+        /* Estilos básicos (CSS) */
+        :root {
+            --cor-fundo: #121212;
+            --cor-texto: #f4f4f4;
+            --cor-destaque: #ff3333; /* Vermelho/Laranja para agressividade no design */
+            --cor-painel: #1e1e1e;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+        }
+
+        header {
+            background-color: #000;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--cor-destaque);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+
+        nav a {
+            color: var(--cor-texto);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: var(--cor-destaque);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 120px 20px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('sua-imagem-de-fundo.jpg') center/cover;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: var(--cor-destaque);
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            text-transform: uppercase;
+        }
+
+        .secao {
+            padding: 80px 50px;
+            text-align: center;
+        }
+
+        .secao h3 {
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: var(--cor-destaque);
+            text-transform: uppercase;
+        }
+
+        .grid-pilotos {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card-piloto {
+            background-color: var(--cor-painel);
+            border-left: 4px solid var(--cor-destaque);
+            padding: 20px;
+            width: 250px;
+            text-align: left;
+        }
+
+        .card-piloto h4 {
+            margin: 0 0 5px 0;
+            font-size: 22px;
+        }
+
+        .card-piloto p {
+            margin: 0;
+            color: #aaa;
+        }
+
+        footer {
+            background-color: #000;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho e Navegação -->
+    <header>
+        <h1>Riptor esports</h1>
+        <nav>
+            <a href="#hero">Início</a>
+            <a href="#pilotos">Pilotos</a>
+            <a href="#simuladores">Simuladores</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <!-- Área de Destaque -->
+    <section id="hero" class="hero">
+        <h2>Estamos na Pista</h2>
+        <p>Competição de alto nível no automobilismo virtual.</p>
+        <a href="#pilotos" class="btn">Conheça a Equipe</a>
+    </section>
+
+    <!-- Seção de Pilotos -->
+    <section id="pilotos" class="secao">
+        <h3>Nosso Grid</h3>
+        <div class="grid-pilotos">
+            <div class="card-piloto">
+                <h4>Lisandro Antonello</h4>
+                <p>Categoria: AM</p>
+                <p>@lisandro.r.a</p>
+            </div>
+            <!-- Adicione mais blocos de card-piloto conforme necessário -->
+        </div>
+    </section>
+
+    <!-- Seção de Simuladores -->
+    <section id="simuladores" class="secao" style="background-color: #0a0a0a;">
+        <h3>Plataformas de Competição</h3>
+        <p>Atuação oficial da equipe nas principais simulações do mercado:</p>
+        <ul style="list-style: none; padding: 0; font-size: 20px;">
+            <li style="margin: 10px 0;">🏁 iRacing</li>
+            <li style="margin: 10px 0;">🏁 Le Mans Ultimate</li>
+        </ul>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 Riptor esports. Todos os direitos reservados. www.riptor.com.br</p>
+    </footer>
+
+</body>
+</html>
