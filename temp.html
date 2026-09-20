@@ -269,8 +269,9 @@
         </div>
         <nav>
             <a href="#hero">Início</a>
-            <a href="#agenda">Agenda</a>
+            <a href="#agenda">Na Pista</a>
             <a href="#pilotos">Pilotos</a>
+	    <a href="#transmissao">Transmissões</a>
             <a href="#simuladores">Simuladores</a>
             <a href="#contato">Contato</a>
         </nav>
@@ -350,19 +351,9 @@
         </div>
     </section>
 
-    <!-- Seção de Simuladores -->
-    <section id="simuladores" class="secao" style="background-color: #0a0a0a;">
-        <h3>Plataformas de Competição</h3>
-        <p>Atuação oficial da equipe nas principais simulações do mercado:</p>
-        <ul style="list-style: none; padding: 0; font-size: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
-            <li><a href="https://assettocorsa.gg/assetto-corsa-competizione/" target="_blank"><img src="acc.png" height="50" alt="ACC"></a></li>
-            <li><a href="https://www.iracing.com/" target="_blank"><img src="iracing.png" height="40" alt="iRacing"></a></li>
-            <li><a href="https://lemansultimate.com/" target="_blank"><img src="lmu.png" height="40" alt="LMU"></a></li>
-        </ul>
-    </section>
-
     <!-- Container dos vídeos -->
-    <section class="secao" style="padding-top: 0;">
+    <section id="transmissao" class="secao" style="padding-top: 0;">
+	<h3>Últimas Transmissões</h3>
         <div id="grid-videos-pilotos" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; font-family: sans-serif;"></div>
     </section>
 
@@ -421,6 +412,19 @@
             .catch(error => console.error(`Erro ao carregar o canal ${channelId}:`, error));
     });
     </script>
+
+    <!-- Seção de Simuladores -->
+    <section id="simuladores" class="secao" style="background-color: #0a0a0a;">
+        <h3>Plataformas de Competição</h3>
+        <p>Atuação oficial da equipe nas principais simulações do mercado:</p>
+        <ul style="list-style: none; padding: 0; font-size: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
+            <li><a href="https://assettocorsa.gg/assetto-corsa-competizione/" target="_blank"><img src="acc.png" height="50" alt="ACC"></a></li>
+            <li><a href="https://www.iracing.com/" target="_blank"><img src="iracing.png" height="40" alt="iRacing"></a></li>
+            <li><a href="https://lemansultimate.com/" target="_blank"><img src="lmu.png" height="40" alt="LMU"></a></li>
+        </ul>
+    </section>
+
+
 
     <!-- Rodapé -->
     <footer>
