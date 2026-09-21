@@ -424,6 +424,63 @@
             }
         }
 
+/* Estilos do Formulário de Contato Alinhados */
+        .form-contato {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .grupo-input {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: left;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .grupo-input label {
+            font-weight: bold;
+            color: var(--cor-texto);
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .grupo-input input,
+        .grupo-input textarea {
+            background-color: #121212;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 12px;
+            border-radius: 4px;
+            font-family: inherit;
+            width: 100%;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        .grupo-input input:focus,
+        .grupo-input textarea:focus {
+            outline: none;
+            border-color: var(--cor-destaque);
+            box-shadow: 0 0 8px rgba(255, 211, 0, 0.3);
+        }
+
+        .btn-enviar {
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .btn-enviar:hover {
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(255, 211, 0, 0.6);
+        }
+
     </style>
 </head>
 <body>
@@ -744,6 +801,9 @@
         <div id="grid-videos-pilotos" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; font-family: sans-serif;"></div>
     </section>
 
+
+<!-- Função para ver as últimas transmissões dos pilotos -->
+
     <script>
     const canaisPilotos = [
         'UCHR8v6_zu_gbLyYtNxKOkew', 
@@ -865,6 +925,40 @@
             <li><a href="https://www.iracing.com/" target="_blank"><img src="iracing.png" height="40" alt="iRacing"></a></li>
             <li><a href="https://lemansultimate.com/" target="_blank"><img src="lmu.png" height="40" alt="LMU"></a></li>
         </ul>
+    </section>
+
+<!-- Seção de Contato -->
+    <section id="contato" class="secao">
+        <h3>Contato</h3>
+        <p style="color: #aaa; margin-bottom: 40px; font-size: 18px;">Entre no nosso vácuo. Envie uma mensagem para a equipe.</p>
+        
+        <div style="max-width: 600px; margin: 0 auto; background-color: var(--cor-painel); padding: 30px; border-radius: 8px; border-left: 4px solid var(--cor-destaque); box-shadow: 0 0 15px rgba(0,0,0,0.5);">
+            
+            <form action="https://formsubmit.co/vitorsantoscont@gmail.com" method="POST" class="form-contato">
+                <!-- Desativa o captcha do formsubmit -->
+                <input type="hidden" name="_captcha" value="false">
+                <!-- URL de redirecionamento após o envio (ajuste se necessário) -->
+                <input type="hidden" name="_next" value="https://www.riptor.com.br/">
+                
+                <div class="grupo-input">
+                    <label for="nome">Nome / Nickname</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                
+                <div class="grupo-input">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="grupo-input">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-enviar">Enviar Mensagem</button>
+            </form>
+            
+        </div>
     </section>
 
 
