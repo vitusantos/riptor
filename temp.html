@@ -481,6 +481,38 @@
             box-shadow: 0 0 15px rgba(255, 211, 0, 0.6);
         }
 
+/* Transforma o grid do Instagram em um carrossel horizontal */
+        #grid-instagram {
+            display: flex;
+            flex-wrap: nowrap !important; /* Impede que os posts quebrem para a linha de baixo */
+            overflow-x: auto; /* Habilita a barra de rolagem lateral */
+            scroll-snap-type: x mandatory; /* Faz o carrossel "encaixar" suavemente em cada post */
+            gap: 20px;
+            padding-bottom: 20px;
+            justify-content: flex-start !important; /* Alinha os itens à esquerda no carrossel */
+            scrollbar-width: thin; /* Barra de rolagem fina para navegadores modernos */
+            scrollbar-color: var(--cor-destaque) #121212;
+        }
+
+        /* Faz cada post encaixar perfeitamente no scroll */
+        #grid-instagram > blockquote {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+        }
+
+        /* Estilização da barra de rolagem horizontal do carrossel */
+        #grid-instagram::-webkit-scrollbar {
+            height: 8px;
+        }
+        #grid-instagram::-webkit-scrollbar-track {
+            background: #121212;
+            border-radius: 4px;
+        }
+        #grid-instagram::-webkit-scrollbar-thumb {
+            background: var(--cor-destaque);
+            border-radius: 4px;
+        }
+
     </style>
 </head>
 <body>
@@ -518,9 +550,10 @@
         <h3>Pitwall</h3>
         <p style="color: #aaa; margin-bottom: 40px; font-size: 18px;">Acompanhe as últimas atualizações da equipe no Instagram.</p>
         
-        <!-- Onde os posts vão aparecer magicamente -->
-        <div id="grid-instagram" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;"></div>
-
+<!-- Container principal do carrossel com largura controlada -->
+        <div style="max-width: 1000px; margin: 0 auto; overflow: hidden; padding: 0 10px;">
+            <div id="grid-instagram" style="display: flex; gap: 20px; justify-content: flex-start;"></div>
+        </div>
 	
     <!-- Banner Instagram -->
 	<div style="text-align: center; margin-bottom: 30px;">
@@ -913,6 +946,7 @@
             // Mensagem vermelha que aparecerá se você tentar testar o arquivo localmente
             document.getElementById('grid-instagram').innerHTML = '<p style="color: #ff3333; font-weight: bold; text-align: center;">As postagens foram bloqueadas pela segurança do navegador local. Faça o upload dos arquivos index.html e postagens.txt para o seu GitHub Pages para visualizar a galeria funcionando.</p>';
         });
+
 
 	</script>
 
