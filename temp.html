@@ -289,6 +289,15 @@
         <a href="#pilotos" class="btn">Conheça a Equipe</a>
     </section>
 
+<!-- Seção do Instagram -->
+    <section id="instagram" class="secao" style="background-color: #0a0a0a;">
+        <h3>Pitwall Riptor</h3>
+        <p style="color: #aaa; margin-bottom: 40px; font-size: 18px;">Acompanhe as últimas atualizações da equipe no Instagram.</p>
+        
+        <!-- Onde os posts vão aparecer magicamente -->
+        <div id="grid-instagram" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;"></div>
+    </section>
+
     <!-- Seção de Campeonatos e Agenda -->
     <section id="agenda" class="secao" style="background-color: #0a0a0a;">
         
@@ -442,7 +451,50 @@
             })
             .catch(error => console.error(`Erro ao carregar o canal ${channelId}:`, error));
     });
-    </script>
+
+// Função para ler o arquivo externo e gerar os posts do Instagram
+    fetch('postagens.txt')
+        .then(response => response.text()) // Lê o conteúdo do txt
+        .then(data => {
+            // Separa o texto linha por linha
+            const linhas = data.split('\n');
+            const containerInsta = document.getElementById('grid-instagram');
+
+            // Passa por cada linha do arquivo
+            linhas.forEach(linha => {
+                const url = linha.trim(); // Remove espaços em branco
+                
+                // Verifica se a linha não está vazia e se é um link do instagram
+                if (url && url.includes('instagram.com/p/')) {
+                    
+                    // CORREÇÃO: Remove parâmetros de rastreamento da URL (tudo a partir do '?')
+                    const urlLimpa = url.split('?')[0];
+                    
+                    // Adiciona '/embed' no final da URL oficial limpa para gerar o player nativo
+                    const urlBase = urlLimpa.endsWith('/') ? urlLimpa : urlLimpa + '/';
+                    const urlEmbed = urlBase + 'embed';
+
+                    // Cria o visual do post
+                    const iframe = document.createElement('iframe');
+                    iframe.src = urlEmbed;
+                    iframe.width = "320";
+                    iframe.height = "500"; // Altura padrão do post
+                    iframe.frameBorder = "0";
+                    iframe.scrolling = "no";
+                    
+                    // Estilização com a cara da Riptor
+                    iframe.style.borderRadius = "8px";
+                    iframe.style.boxShadow = "0 0 15px rgba(255, 211, 0, 0.2)";
+                    iframe.style.backgroundColor = "#fff";
+
+                    // Adiciona o post na tela
+                    containerInsta.appendChild(iframe);
+                }
+            });
+        })
+        .catch(error => console.error('Erro ao carregar o pitwall:', error));
+
+	</script>
 
     <!-- Seção de Simuladores -->
     <section id="simuladores" class="secao" style="background-color: #0a0a0a;">
