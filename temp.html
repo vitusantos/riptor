@@ -4,7 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Riptor esports | Automobilismo Virtual</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <style>
+	h1, h2, h3, h4, .btn, nav a, .btn-sigam-insta {
+    	font-family: 'Rajdhani', sans-serif;
+	}
+	html {
+ 	   scroll-behavior: smooth;
+	}
         /* Estilos básicos (CSS) */
         :root {
             --cor-fundo: #121212;
@@ -133,7 +140,13 @@
             max-width: 250px;
             text-align: left;
             box-sizing: border-box;
+	    transition: all 0.3s ease;
         }
+	.card-piloto:hover {
+    	    background-color: #252525;
+    	    box-shadow: 0 0 15px rgba(255, 211, 0, 0.2);
+    	    transform: translateY(-5px);
+	}
 
         .card-piloto img.foto-piloto {
             width: 100%;
@@ -303,7 +316,20 @@
                 box-sizing: border-box;
             }
         }
-
+/* Estilização da Barra de Rolagem */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #121212;
+}
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--cor-destaque);
+}
     </style>
 </head>
 <body>
