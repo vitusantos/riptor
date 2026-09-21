@@ -466,11 +466,13 @@
                 if (url && url.includes('instagram.com/p/')) {
                     
                     const urlLimpa = url.split('?')[0]; 
+                    // Garante a barra final na URL para a API funcionar
+                    const urlFinal = urlLimpa.endsWith('/') ? urlLimpa : urlLimpa + '/';
                     
                     // Cria a estrutura oficial de Blockquote exigida pelo Instagram
                     const blockquote = document.createElement('blockquote');
                     blockquote.className = 'instagram-media';
-                    blockquote.setAttribute('data-instgrm-permalink', urlLimpa);
+                    blockquote.setAttribute('data-instgrm-permalink', urlFinal + '?utm_source=ig_embed');
                     blockquote.setAttribute('data-instgrm-version', '14');
                     
                     // Mantém a identidade e o tamanho padrão da Riptor
@@ -488,17 +490,23 @@
                 }
             });
 
-            // Aciona o script oficial do Instagram para renderizar o design
-            if (window.instgrm) {
-                window.instgrm.Embeds.process();
-            } else {
+            // Força o carregamento do script com HTTPS e processa na hora certa
+            if (!window.instgrm) {
                 const script = document.createElement('script');
-                script.src = "//www.instagram.com/embed.js";
+                script.src = "https://www.instagram.com/embed.js";
                 script.async = true;
+                script.onload = () => window.instgrm.Embeds.process(); // Gatilho de segurança
                 document.body.appendChild(script);
+            } else {
+                window.instgrm.Embeds.process();
             }
         })
-        .catch(error => console.error('Erro ao carregar o pitwall:', error));
+        .catch(error => {
+            console.error('Erro ao carregar o pitwall:', error);
+            // Mensagem vermelha que aparecerá se você tentar testar o arquivo localmente
+            document.getElementById('grid-instagram').innerHTML = '<p style="color: #ff3333; font-weight: bold; text-align: center;">As postagens foram bloqueadas pela segurança do navegador local. Faça o upload dos arquivos index.html e postagens.txt para o seu GitHub Pages para visualizar a galeria funcionando.</p>';
+        });
+
 	</script>
 
     <!-- Seção de Simuladores -->
