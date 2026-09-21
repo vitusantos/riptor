@@ -352,19 +352,37 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(10, 10, 10, 0.9); /* Fundo quase preto */
+            background-color: rgba(10, 10, 10, 0.95); /* Fundo quase sólido para legibilidade */
             color: #fff;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start; /* Alinha o conteúdo no topo do card */
             padding: 15px;
             box-sizing: border-box;
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.4s ease;
-            font-size: 14px;
+            font-size: 13px;
             text-align: left;
             border: 1px solid var(--cor-destaque);
+            border-radius: 4px;
+            
+            /* Adicionado para criar a barra de rolagem interna */
+            overflow-y: auto; 
+            scrollbar-width: thin;
+            scrollbar-color: var(--cor-destaque) #121212;
+        }
+
+        /* Estilização da barra de rolagem interna do pop-up */
+        .piloto-info-overlay::-webkit-scrollbar {
+            width: 5px;
+        }
+        .piloto-info-overlay::-webkit-scrollbar-track {
+            background: #121212;
+            border-radius: 4px;
+        }
+        .piloto-info-overlay::-webkit-scrollbar-thumb {
+            background: var(--cor-destaque);
             border-radius: 4px;
         }
 
