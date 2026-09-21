@@ -1070,5 +1070,45 @@
             <polyline points="18 15 12 9 6 15"></polyline>
         </svg>
     </a>
+<script>
+    // Intercepta o envio do formulário de contato
+    document.getElementById('form-contato-ajax').addEventListener('submit', function(e) {
+        e.preventDefault(); // Impede que a página recarregue
+
+        const form = e.target;
+        const data = new FormData(form);
+        const botaoSubmit = form.querySelector('.btn-enviar');
+        const mensagemSucesso = document.getElementById('mensagem-sucesso');
+
+        // Altera o texto do botão para indicar carregamento
+        const textoOriginal = botaoSubmit.innerText;
+        botaoSubmit.innerText = 'Aquecendo os pneus...';
+        botaoSubmit.disabled = true;
+
+        // Envia os dados para o FormSubmit em segundo plano
+        fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                form.style.display = 'none'; // Esconde os campos do formulário
+                mensagemSucesso.style.display = 'block'; // Exibe a mensagem de impacto
+            } else {
+                alert('Bandeira vermelha: Aconteceu um erro no grid. Tente enviar novamente.');
+                botaoSubmit.innerText = textoOriginal;
+                botaoSubmit.disabled = false;
+            }
+        })
+        .catch(error => {
+            alert('Falha na comunicação com os boxes. Verifique sua internet.');
+            botaoSubmit.innerText = textoOriginal;
+            botaoSubmit.disabled = false;
+        });
+    });
+</script>
 </body>
 </html>
