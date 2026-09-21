@@ -616,9 +616,33 @@
         <!-- Bloco do Calendário (Google Agenda) -->
         <h3>Próximas Corridas</h3>
         <div class="calendario-container">
-            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=America%2FAraguaina&showPrint=0&mode=AGENDA&showTabs=0&showNav=0&showDate=0&showCalendars=0&showTz=0&title=Riptor%20na%20Pista&showTitle=0&src=dml0b3JzYW50b3Njb250QGdtYWlsLmNvbQ&color=%23039be5" style="border-width:0" frameborder="0" scrolling="no"></iframe>
+            <iframe id="iframe-calendario" style="border-width:0" frameborder="0" scrolling="no"></iframe>
         </div>
-    </section>
+
+        <script>
+            // Filtro dinâmico para carregar apenas os próximos 15 dias
+            const iframeCalendario = document.getElementById('iframe-calendario');
+            
+            // URL base limpa do seu calendário
+            const urlBase = "https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=America%2FAraguaina&showPrint=0&mode=AGENDA&showTabs=0&showNav=0&showDate=0&showCalendars=0&showTz=0&title=Riptor%20na%20Pista&showTitle=0&src=dml0b3JzYW50b3Njb250QGdtYWlsLmNvbQ&color=%23039be5";
+            
+            // Cálculos de datas
+            const dataHoje = new Date();
+            const dataLimite = new Date();
+            dataLimite.setDate(dataHoje.getDate() + 15); // Altere o 15 para qualquer outro número de dias, se desejar
+
+            // Função para formatar a data no padrão YYYYMMDD exigido pelo Google
+            const formatarParaGoogle = (data) => {
+                const ano = data.getFullYear();
+                const mes = String(data.getMonth() + 1).padStart(2, '0');
+                const dia = String(data.getDate()).padStart(2, '0');
+                return `${ano}${mes}${dia}`;
+            };
+
+            // Monta a URL final e injeta no iframe
+            const parametrosData = `&dates=${formatarParaGoogle(dataHoje)}/${formatarParaGoogle(dataLimite)}`;
+            iframeCalendario.src = urlBase + parametrosData;
+        </script>
 
     <!-- Seção de Pilotos -->
     <section id="pilotos" class="secao">
