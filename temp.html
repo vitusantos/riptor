@@ -620,18 +620,15 @@
         </div>
 
         <script>
-            // Filtro dinâmico para carregar apenas os próximos 15 dias
             const iframeCalendario = document.getElementById('iframe-calendario');
             
-            // URL base limpa do seu calendário
+            // URL base do calendário em modo AGENDA
             const urlBase = "https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=America%2FAraguaina&showPrint=0&mode=AGENDA&showTabs=0&showNav=0&showDate=0&showCalendars=0&showTz=0&title=Riptor%20na%20Pista&showTitle=0&src=dml0b3JzYW50b3Njb250QGdtYWlsLmNvbQ&color=%23039be5";
             
-            // Cálculos de datas
+            // Captura a data de hoje
             const dataHoje = new Date();
-            const dataLimite = new Date();
-            dataLimite.setDate(dataHoje.getDate() + 15); // Altere o 15 para qualquer outro número de dias, se desejar
 
-            // Função para formatar a data no padrão YYYYMMDD exigido pelo Google
+            // Formata no padrão Google (YYYYMMDD)
             const formatarParaGoogle = (data) => {
                 const ano = data.getFullYear();
                 const mes = String(data.getMonth() + 1).padStart(2, '0');
@@ -639,9 +636,10 @@
                 return `${ano}${mes}${dia}`;
             };
 
-            // Monta a URL final e injeta no iframe
-            const parametrosData = `&dates=${formatarParaGoogle(dataHoje)}/${formatarParaGoogle(dataLimite)}`;
-            iframeCalendario.src = urlBase + parametrosData;
+            // Injeta a data de hoje para forçar a lista a ocultar o passado
+            // O %2F é obrigatório para separar as datas sem quebrar o Iframe
+            const dataFormatada = formatarParaGoogle(dataHoje);
+            iframeCalendario.src = urlBase + `&dates=${dataFormatada}%2F${dataFormatada}`;
         </script>
 
     <!-- Seção de Pilotos -->
