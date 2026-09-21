@@ -452,48 +452,53 @@
             .catch(error => console.error(`Erro ao carregar o canal ${channelId}:`, error));
     });
 
-// Função para ler o arquivo externo e gerar os posts do Instagram
+// Função para ler o arquivo externo e gerar os posts do Instagram com o layout oficial
     fetch('postagens.txt')
         .then(response => response.text()) // Lê o conteúdo do txt
         .then(data => {
-            // Separa o texto linha por linha
             const linhas = data.split('\n');
             const containerInsta = document.getElementById('grid-instagram');
 
             // Passa por cada linha do arquivo
             linhas.forEach(linha => {
-                const url = linha.trim(); // Remove espaços em branco
+                const url = linha.trim(); 
                 
-                // Verifica se a linha não está vazia e se é um link do instagram
                 if (url && url.includes('instagram.com/p/')) {
                     
-                    // CORREÇÃO: Remove parâmetros de rastreamento da URL (tudo a partir do '?')
-                    const urlLimpa = url.split('?')[0];
+                    const urlLimpa = url.split('?')[0]; 
                     
-                    // Adiciona '/embed' no final da URL oficial limpa para gerar o player nativo
-                    const urlBase = urlLimpa.endsWith('/') ? urlLimpa : urlLimpa + '/';
-                    const urlEmbed = urlBase + 'embed';
-
-                    // Cria o visual do post
-                    const iframe = document.createElement('iframe');
-                    iframe.src = urlEmbed;
-                    iframe.width = "320";
-                    iframe.height = "500"; // Altura padrão do post
-                    iframe.frameBorder = "0";
-                    iframe.scrolling = "no";
+                    // Cria a estrutura oficial de Blockquote exigida pelo Instagram
+                    const blockquote = document.createElement('blockquote');
+                    blockquote.className = 'instagram-media';
+                    blockquote.setAttribute('data-instgrm-permalink', urlLimpa);
+                    blockquote.setAttribute('data-instgrm-version', '14');
                     
-                    // Estilização com a cara da Riptor
-                    iframe.style.borderRadius = "8px";
-                    iframe.style.boxShadow = "0 0 15px rgba(255, 211, 0, 0.2)";
-                    iframe.style.backgroundColor = "#fff";
+                    // Mantém a identidade e o tamanho padrão da Riptor
+                    blockquote.style.background = '#FFF';
+                    blockquote.style.border = '0';
+                    blockquote.style.borderRadius = '8px';
+                    blockquote.style.boxShadow = '0 0 15px rgba(255, 211, 0, 0.2)';
+                    blockquote.style.margin = '1px';
+                    blockquote.style.maxWidth = '320px';
+                    blockquote.style.minWidth = '320px';
+                    blockquote.style.padding = '0';
+                    blockquote.style.width = 'calc(100% - 2px)';
 
-                    // Adiciona o post na tela
-                    containerInsta.appendChild(iframe);
+                    containerInsta.appendChild(blockquote);
                 }
             });
+
+            // Aciona o script oficial do Instagram para renderizar o design
+            if (window.instgrm) {
+                window.instgrm.Embeds.process();
+            } else {
+                const script = document.createElement('script');
+                script.src = "//www.instagram.com/embed.js";
+                script.async = true;
+                document.body.appendChild(script);
+            }
         })
         .catch(error => console.error('Erro ao carregar o pitwall:', error));
-
 	</script>
 
     <!-- Seção de Simuladores -->
