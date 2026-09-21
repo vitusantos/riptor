@@ -330,6 +330,60 @@
 ::-webkit-scrollbar-thumb:hover {
     background: var(--cor-destaque);
 }
+
+/* Efeito de Overlay (Pop-up dinâmico) nas fotos dos pilotos */
+        .piloto-imagem-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .piloto-imagem-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.4s ease;
+        }
+
+        .piloto-info-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 10, 10, 0.9); /* Fundo quase preto */
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 15px;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            font-size: 14px;
+            text-align: left;
+            border: 1px solid var(--cor-destaque);
+            border-radius: 4px;
+        }
+
+        .piloto-info-overlay strong {
+            color: var(--cor-destaque);
+            font-size: 16px;
+        }
+
+        /* O que acontece ao passar o mouse no card */
+        .card-piloto:hover .piloto-info-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-piloto:hover .piloto-imagem-container img {
+            transform: scale(1.1); /* Dá um zoom suave na foto do piloto */
+            filter: grayscale(100%) blur(2px); /* Remove a cor e desfoca o fundo para o texto ficar legível */
+        }
+
     </style>
 </head>
 <body>
@@ -418,59 +472,229 @@
     <!-- Seção de Pilotos -->
     <section id="pilotos" class="secao">
         <h3>Nossos Pilotos</h3>
+
         <div class="grid-pilotos">
             <div class="card-piloto">
                 <h4>Fábio Marques</h4>
+
+                <!-- Novo Container da Imagem com Overlay -->
+                <div class="piloto-imagem-container">
                 <img class="foto-piloto" src="FabioMarques_Riptor.jpg" alt="Fábio Marques">
-                <p>
+                    
+                    <!-- Textos do Pop-up -->
+                    <div class="piloto-info-overlay">
+                        <strong>🏆 Títulos:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            - 🥇 Campeão(2026)
+                        </p>
+                        
+                        <strong>⚙️ Simuladores:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            Lemans Ultimate<br>
+			    
+                        </p>
+
+			<strong>🛞 Carro Preferido:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            BMW M4 GT3
+			    
+                        </p>			
+                    </div>
+                </div>
+
+                <p style="margin-top: 15px;">
+
+
+                
 		<a href="https://www.instagram.com/fabiomarquesracing/" target="_blank"><img src="instagram.png" height="40" width="40" alt="Instagram"></a><a href="https://www.youtube.com/@Fabiomarquesracing" target="_blank"><img src="youtube.png" height="40" width="40" alt="Youtube"></a>
 		<a href="https://steamcommunity.com/profiles/76561199859715959" target="_blank"><img src="steam.png" height="40" weight="40" alt="Steam"></a>
 		</p>
             </div>
+
             <div class="card-piloto">
                 <h4>Fernando Nask</h4>
+
+                <!-- Novo Container da Imagem com Overlay -->
+                <div class="piloto-imagem-container">
                 <img class="foto-piloto" src="FernandoNask_Riptor.jpg" alt="Fernando Nask">
-                <p>
+                    
+                    <!-- Textos do Pop-up -->
+                    <div class="piloto-info-overlay">
+                        <strong>🏆 Títulos:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            - 🥇 Campeão(2026)
+                        </p>
+                        
+                        <strong>⚙️ Simuladores:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            Lemans Ultimate <br>
+			    
+                        </p>
+
+			<strong>🛞 Carro Preferido:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            Aston MArtin GT3
+			    
+                        </p>			
+                    </div>
+                </div>
+
+                <p style="margin-top: 15px;">
+
+
+                
 		<a href="https://www.instagram.com/fernando.naskbr/" target="_blank"><img src="instagram.png" height="40" width="40" alt="Instagram"></a>
 		<a href="https://www.youtube.com/@fernando.naskbr" target="_blank"><img src="youtube.png" height="40" width="40" alt="Youtube"></a>
 		<a href="https://steamcommunity.com/profiles/76561199817953050" target="_blank"><img src="steam.png" heigth="40" width="40" alt="Steam"></a>
 		</p>
             </div>
+
             <div class="card-piloto">
                 <h4>Ícaro Albano</h4>
-                <img class="foto-piloto" src="IcaroAlbano_Riptor.jpg" alt="Ícaro Albano">
-                <p>
+                
+
+                <!-- Novo Container da Imagem com Overlay -->
+                <div class="piloto-imagem-container">
+                    <img class="foto-piloto" src="IcaroAlbano_Riptor.jpg" alt="Ícaro Albano">
+                    
+                    <!-- Textos do Pop-up -->
+                    <div class="piloto-info-overlay">
+                        <strong>🏆 Títulos:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            - 🥇 Campeão(2026)
+                        </p>
+                        
+                        <strong>⚙️ Simuladores:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            Lemans Ultimate <br>
+			    
+                        </p>
+
+			<strong>🛞 Carro Preferido:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            Mustang GT3
+			    
+                        </p>			
+                    </div>
+                </div>
+
+                <p style="margin-top: 15px;">
 		<a href="https://www.instagram.com/icaroalbano119/" target="_blank"><img src="instagram.png" height="40" width="40" alt="Instagram"></a>
 		<a href="https://www.youtube.com/@IcaroAlbano" target="_blank"><img src="youtube.png" height="40" width="40" alt="Youtube"></a>
 		<a href="https://steamcommunity.com/profiles/76561198713964154" target="_blank"><img src="steam.png" height="40" width="40" alt="Steam"></a>
 		</p>
             </div>
-            <div class="card-piloto">
+
+	    <div class="card-piloto">
                 <h4>Lisandro Antonello</h4>
-                <img class="foto-piloto" src="LisandroAntonello_Riptor.jpg" alt="Lisandro Antonello">
-                <p>
-		<a href="https://www.instagram.com/lisandro.r.a/" target="_blank"><img src="instagram.png" height="40" width="40" alt="Instagram"></a>
-		<a href="https://steamcommunity.com/profiles/76561198100447392" target="_blank"><img src="steam.png" heigth="40" width="40" alt="Steam"></a>
-		</p>
+                
+                <!-- Novo Container da Imagem com Overlay -->
+                <div class="piloto-imagem-container">
+                    <img class="foto-piloto" src="LisandroAntonello_Riptor.jpg" alt="Lisandro Antonello">
+                    
+                    <!-- Textos do Pop-up -->
+                    <div class="piloto-info-overlay">
+                        <strong>🏆 Títulos:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            - 🥇 11º La Piazza GT3 Série A Cat. AM(2026)
+                        </p>
+                        
+                        <strong>⚙️ Simuladores:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            Assetto Corsa Competizione <br>
+			    Lemans Ultimate
+                        </p>
+
+			<strong>🛞 Carro Preferido:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            Ferrari 296 GT3
+			    
+                        </p>			
+                    </div>
+                </div>
+
+                <p style="margin-top: 15px;">
+		            <a href="https://www.instagram.com/lisandro.r.a/" target="_blank"><img src="instagram.png" height="40" width="40" 						alt="Instagram"></a>
+		            <a href="https://steamcommunity.com/profiles/76561198100447392" target="_blank"><img src="steam.png" height="40" width="40" 				alt="Steam"></a>
+		        </p>
             </div>
+
             <div class="card-piloto">
                 <h4>Matheus Rodrigues</h4>
+
+                <!-- Novo Container da Imagem com Overlay -->
+                <div class="piloto-imagem-container">
                 <img class="foto-piloto" src="Bumbata_Riptor.jpg" alt="Matheus Rodrigues">
-                <p>
+                    
+                    <!-- Textos do Pop-up -->
+                    <div class="piloto-info-overlay">
+                        <strong>🏆 Títulos:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            - 🥇 Campeão (2026)
+                        </p>
+                        
+                        <strong>⚙️ Simuladores:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            iRacing <br>
+			    
+                        </p>
+
+			<strong>🛞 Carro Preferido:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            Ferrari 296 GT3
+			    
+                        </p>			
+                    </div>
+                </div>
+
+                <p style="margin-top: 15px;">
+                
+
+
 		<a href="https://www.instagram.com/matheus_omr/" target="_blank"><img src="instagram.png" height="40" width="40" alt="Instagram"></a> 
 		<a href="https://www.youtube.com/@MatheusBumbata" target="_blank"><img src="youtube.png" height="40" width="40" alt="Youtube"></a>
 		<a href="https://steamcommunity.com/profiles/76561198074610614" target="_blank"><img src="steam.png" heigth="40" width="40" alt="Steam"></a>
 		</p>
             </div>
+
             <div class="card-piloto">
                 <h4>Vitor Santos</h4>
+                
+                <!-- Novo Container da Imagem com Overlay -->
+                <div class="piloto-imagem-container">
                 <img class="foto-piloto" src="VitorSantos_Riptor.jpg" alt="Vitor Santos">
-                <p>
+                    
+                    <!-- Textos do Pop-up -->
+                    <div class="piloto-info-overlay">
+                        <strong>🏆 Títulos:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            - 🥇 Campeão (2026)
+                        </p>
+                        
+                        <strong>⚙️ Simuladores:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            Lemans Ultimate <br>
+			    iRacing
+                        </p>
+
+			<strong>🛞 Carro Preferido:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            BMW M4 GT3
+			    
+                        </p>			
+                    </div>
+                </div>
+
+                <p style="margin-top: 15px;">
+
+
+
 		<a href="https://www.instagram.com/_vitusantos_/" target="_blank"><img src="instagram.png" height="40" width="40" alt="Instagram"></a> 
 		<a href="https://www.youtube.com/@VituSantosBR" target="_blank"><img src="youtube.png" height="40" width="40" alt="Youtube"></a>
 		<a href="https://steamcommunity.com/id/vitusantos/" target="_blank"><img src="steam.png" height="40" width="40" alt="Steam"></a>
 		</p>
             </div>
+
         </div>
     </section>
 
