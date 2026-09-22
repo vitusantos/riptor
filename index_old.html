@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riptor esports | Preparando para a largada</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            background-image: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+        }
+        .container {
+            max-width: 600px;
+            padding: 20px;
+        }
+        .mascote-box {
+            width: 250px;
+            height: auto;
+            margin-bottom: 20px;
+            /* Efeito de brilho que remete à iluminação do velociraptor biomecânico */
+            filter: drop-shadow(0 0 20px rgba(255, 170, 0, 0.4));
+        }
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            background: linear-gradient(90deg, #ffffff, #aaaaaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .status {
+            color: #ff3333;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 10px;
+            letter-spacing: 2px;
+            animation: blink 1.5s infinite;
+        }
+        p {
+            color: #888;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+        .rpm-bar-container {
+            width: 100%;
+            height: 12px;
+            background-color: #222;
+            margin-top: 40px;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: inset 0 0 5px #000;
+        }
+        .rpm-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ffd700, #ffaa00, #ff3333);
+            animation: acelerador 2s ease-in-out infinite alternate;
+        }
+
+        /* Animações */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        @keyframes acelerador {
+            0% { width: 10%; }
+            100% { width: 95%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- O arquivo mascote.png deve estar na mesma pasta deste index.html no GitHub -->
+        <img src="mascote.png" alt="Mascote Riptor" class="mascote-box">
+        
+        <h1><img src="logo_transparente.png" width="400"></h1>
+        <div class="status">Ajustando o Setup...</div>
+        
+        <p>O novo pit lane da equipe está em desenvolvimento. Nossos engenheiros estão trabalhando na telemetria para a próxima largada.</p>
+        
+        <!-- Barra animada simulando o giro do motor (RPM) -->
+        <div class="rpm-bar-container">
+            <div class="rpm-bar"></div>
+        </div>
+    </div>
+    <h2>#BORNTODOMINATE</h2>
+</body>
+</html>
