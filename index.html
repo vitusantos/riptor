@@ -3,99 +3,1112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Riptor esports | Preparando para a largada</title>
+    <title>Riptor esports | Automobilismo Virtual</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        body {
+	h1, h2, h3, h4, .btn, nav a, .btn-sigam-insta {
+    	font-family: 'Rajdhani', sans-serif;
+	}
+	html {
+ 	   scroll-behavior: smooth;
+	}
+        /* Estilos básicos (CSS) */
+        :root {
+            --cor-fundo: #121212;
+            --cor-texto: #f4f4f4;
+            --cor-destaque: #FFD300; 
+            --cor-painel: #1e1e1e;
+        }
+
+	body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        color: var(--cor-texto);
+        /* Trama de Fibra de Carbono com alto contraste e fundo travado */
+        background-color: #1a1a1a;
+        background-image:
+            linear-gradient(45deg, #0d0d0d 25%, transparent 25%, transparent 75%, #0d0d0d 75%, #0d0d0d),
+            linear-gradient(45deg, #0d0d0d 25%, transparent 25%, transparent 75%, #0d0d0d 75%, #0d0d0d);
+        background-size: 14px 14px;
+        background-position: 0 0, 7px 7px;
+        background-attachment: fixed;
+    }
+        header {
+            background-color: #000;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--cor-destaque);
+            flex-wrap: wrap;
+        }
+
+        .logo-container {
+            text-align: center;
+        }
+
+        header h1 {
             margin: 0;
-            padding: 0;
-            background-color: #050505;
-            color: #ffffff;
-            font-family: 'Arial', sans-serif;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        header img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        header h3 {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: var(--cor-texto);
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: var(--cor-destaque);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 120px 20px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('sua-imagem-de-fundo.jpg') center/cover;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: var(--cor-destaque);
+            color: #000;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+
+	.secao {
+        padding: 80px 20px;
+        text-align: center;
+        /* Película reduzida de 85% para 40% para revelar a fibra de carbono */
+        background-color: rgba(0, 0, 0, 0.4); 
+        border-bottom: 1px solid #222;
+    }
+
+        .secao h3 {
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: var(--cor-destaque);
+            text-transform: uppercase;
+        }
+
+        .grid-pilotos {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card-piloto {
+            background-color: var(--cor-painel);
+            border-left: 4px solid var(--cor-destaque);
+            padding: 20px;
+            width: 100%;
+            max-width: 250px;
+            text-align: left;
+            box-sizing: border-box;
+	    transition: all 0.3s ease;
+        }
+	.card-piloto:hover {
+    	    background-color: #252525;
+    	    box-shadow: 0 0 15px rgba(255, 211, 0, 0.2);
+    	    transform: translateY(-5px);
+	}
+
+        .card-piloto img.foto-piloto {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .card-piloto h4 {
+            margin: 0 0 5px 0;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-piloto p {
+            margin: 0;
+            color: #aaa;
+        }
+
+        footer {
+            background-color: #000;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            border-top: 1px solid #333;
+        }
+
+        .grid-ligas {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .card-liga {
+            background-color: var(--cor-painel);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            width: 100%;
+            max-width: 200px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            text-align: center;
-            background-image: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
-        }
-        .container {
-            max-width: 600px;
-            padding: 20px;
-        }
-        .mascote-box {
-            width: 250px;
-            height: auto;
-            margin-bottom: 20px;
-            /* Efeito de brilho que remete à iluminação do velociraptor biomecânico */
-            filter: drop-shadow(0 0 20px rgba(255, 170, 0, 0.4));
-        }
-        h1 {
-            font-size: 3rem;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 6px;
-            background: linear-gradient(90deg, #ffffff, #aaaaaa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .status {
-            color: #ff3333;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-top: 10px;
-            letter-spacing: 2px;
-            animation: blink 1.5s infinite;
-        }
-        p {
-            color: #888;
-            font-size: 1.1rem;
-            margin-top: 20px;
-            line-height: 1.5;
-        }
-        .rpm-bar-container {
-            width: 100%;
-            height: 12px;
-            background-color: #222;
-            margin-top: 40px;
-            border-radius: 6px;
-            overflow: hidden;
-            box-shadow: inset 0 0 5px #000;
-        }
-        .rpm-bar {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #ffd700, #ffaa00, #ff3333);
-            animation: acelerador 2s ease-in-out infinite alternate;
+            min-height: 100px;
+            box-sizing: border-box;
         }
 
-        /* Animações */
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+        .card-liga:hover {
+            border-color: var(--cor-destaque);
+            box-shadow: 0 0 15px rgba(255, 211, 0, 0.3);
+            transform: translateY(-5px);
         }
-        @keyframes acelerador {
-            0% { width: 10%; }
-            100% { width: 95%; }
+
+        .card-liga span {
+            color: var(--cor-texto);
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
         }
+
+        .card-liga img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+            display: block; /* Alterado de 'none' para 'block' */
+        }
+
+        .calendario-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(255, 211, 0, 0.2);
+            position: relative;
+            height: 350px; /* Altura reduzida para forçar a barra de rolagem no desktop */
+        }
+
+        .calendario-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* Filtros para forçar o Dark Mode: Inverte as luzes e corrige as cores dos eventos */
+        filter: invert(0.92) hue-rotate(180deg) brightness(1.05) contrast(1.1);
+        border-radius: 8px;
+    }
+
+        /* AJUSTES PARA DISPOSITIVOS MÓVEIS */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+
+            nav {
+                margin-top: 15px;
+                gap: 15px;
+            }
+
+            .hero {
+                padding: 80px 15px;
+            }
+
+            .hero h2 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .secao {
+                padding: 50px 15px;
+            }
+
+            .secao h3 {
+                font-size: 26px;
+            }
+
+            .calendario-container {
+                height: 450px; /* Altura um pouco maior no celular para facilitar a leitura e o toque */
+            }
+        }
+	.btn-sigam-insta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            background: transparent;
+            border: 2px solid var(--cor-destaque);
+            color: var(--cor-destaque);
+            padding: 15px 40px;
+            font-size: 24px;
+            font-weight: 900;
+            font-style: italic;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 3px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(255, 211, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-sigam-insta:hover {
+            background-color: var(--cor-destaque);
+            color: #000;
+            box-shadow: 0 0 30px rgba(255, 211, 0, 0.6);
+            transform: scale(1.05);
+        }
+
+        /* Ajuste para não quebrar a tela no celular */
+        @media (max-width: 768px) {
+            .btn-sigam-insta {
+                font-size: 18px;
+                padding: 12px 20px;
+                letter-spacing: 1px;
+                width: 90%;
+                box-sizing: border-box;
+            }
+        }
+/* Estilização da Barra de Rolagem */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #121212;
+}
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--cor-destaque);
+}
+
+/* Efeito de Overlay (Pop-up dinâmico) nas fotos dos pilotos */
+        .piloto-imagem-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .piloto-imagem-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.4s ease;
+        }
+
+        .piloto-info-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 10, 10, 0.95); /* Fundo quase sólido para legibilidade */
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Alinha o conteúdo no topo do card */
+            padding: 15px;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            font-size: 13px;
+            text-align: left;
+            border: 1px solid var(--cor-destaque);
+            border-radius: 4px;
+            
+            /* Adicionado para criar a barra de rolagem interna */
+            overflow-y: auto; 
+            scrollbar-width: thin;
+            scrollbar-color: var(--cor-destaque) #121212;
+        }
+
+        /* Estilização da barra de rolagem interna do pop-up */
+        .piloto-info-overlay::-webkit-scrollbar {
+            width: 5px;
+        }
+        .piloto-info-overlay::-webkit-scrollbar-track {
+            background: #121212;
+            border-radius: 4px;
+        }
+        .piloto-info-overlay::-webkit-scrollbar-thumb {
+            background: var(--cor-destaque);
+            border-radius: 4px;
+        }
+
+        .piloto-info-overlay strong {
+            color: var(--cor-destaque);
+            font-size: 16px;
+        }
+
+        /* O que acontece ao passar o mouse no card */
+        .card-piloto:hover .piloto-info-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-piloto:hover .piloto-imagem-container img {
+            transform: scale(1.1); /* Dá um zoom suave na foto do piloto */
+            filter: grayscale(100%) blur(2px); /* Remove a cor e desfoca o fundo para o texto ficar legível */
+        }
+
+/* Botão Flutuante - Voltar ao Topo */
+        .btn-topo {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--cor-destaque);
+            color: #000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+            transition: all 0.3s ease;
+            z-index: 1000; /* Garante que o botão fique sobreposto a todos os outros elementos */
+        }
+
+        .btn-topo:hover {
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(255, 211, 0, 0.8);
+            transform: translateY(-5px);
+        }
+
+        .btn-topo svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Ajuste de tamanho e margem para telas de celular */
+        @media (max-width: 768px) {
+            .btn-topo {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+/* Estilos do Formulário de Contato Alinhados */
+        .form-contato {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .grupo-input {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: left;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .grupo-input label {
+            font-weight: bold;
+            color: var(--cor-texto);
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .grupo-input input,
+        .grupo-input textarea {
+            background-color: #121212;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 12px;
+            border-radius: 4px;
+            font-family: inherit;
+            width: 100%;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        .grupo-input input:focus,
+        .grupo-input textarea:focus {
+            outline: none;
+            border-color: var(--cor-destaque);
+            box-shadow: 0 0 8px rgba(255, 211, 0, 0.3);
+        }
+
+        .btn-enviar {
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .btn-enviar:hover {
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(255, 211, 0, 0.6);
+        }
+
+/* Transforma o grid do Instagram em um carrossel horizontal */
+        #grid-instagram {
+            display: flex;
+            flex-wrap: nowrap !important; /* Impede que os posts quebrem para a linha de baixo */
+            overflow-x: auto; /* Habilita a barra de rolagem lateral */
+            scroll-snap-type: x mandatory; /* Faz o carrossel "encaixar" suavemente em cada post */
+            gap: 20px;
+            padding-bottom: 20px;
+            justify-content: flex-start !important; /* Alinha os itens à esquerda no carrossel */
+            scrollbar-width: thin; /* Barra de rolagem fina para navegadores modernos */
+            scrollbar-color: var(--cor-destaque) #121212;
+        }
+
+        /* Faz cada post encaixar perfeitamente no scroll */
+        #grid-instagram > blockquote {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+        }
+
+        /* Estilização da barra de rolagem horizontal do carrossel */
+        #grid-instagram::-webkit-scrollbar {
+            height: 8px;
+        }
+        #grid-instagram::-webkit-scrollbar-track {
+            background: #121212;
+            border-radius: 4px;
+        }
+        #grid-instagram::-webkit-scrollbar-thumb {
+            background: var(--cor-destaque);
+            border-radius: 4px;
+        }
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- O arquivo mascote.png deve estar na mesma pasta deste index.html no GitHub -->
-        <img src="mascote.png" alt="Mascote Riptor" class="mascote-box">
-        
-        <h1><img src="logo_transparente.png" width="400"></h1>
-        <div class="status">Ajustando o Setup...</div>
-        
-        <p>O novo pit lane da equipe está em desenvolvimento. Nossos engenheiros estão trabalhando na telemetria para a próxima largada.</p>
-        
-        <!-- Barra animada simulando o giro do motor (RPM) -->
-        <div class="rpm-bar-container">
-            <div class="rpm-bar"></div>
+
+    <!-- Cabeçalho e Navegação -->
+    <header>
+        <div class="logo-container">
+            <h1><img src="logo_transparente.png" width="250" alt="Riptor Logo"></h1>
+            <h3>#BORNTODOMINATE</h3>
         </div>
+        <nav>
+            <a href="#hero">Início</a>
+            <a href="#agenda">Na Pista</a>
+            <a href="#pilotos">Pilotos</a>
+	    <a href="#transmissao">Transmissões</a>
+            <a href="#simuladores">Simuladores</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <!-- Área de Destaque -->
+    <section id="hero" class="hero">
+        <h2>Instinto Predatório nas Pistas</h2>
+        <p style="max-width: 800px; margin: 0 auto 30px auto; line-height: 1.6;">
+            A <strong>Riptor eSports</strong> é uma força predatória no cenário do automobilismo virtual de alta performance. 
+            Competindo no mais alto nível em simuladores consagrados, 
+            nossa equipe é a síntese exata entre inovação tecnológica e precisão milimétrica. Nas pistas, unimos estratégia 
+            implacável a uma identidade visual agressiva e marcante, dominando cada traçado com a ferocidade de quem corre para vencer.
+        </p>
+        <a href="#pilotos" class="btn">Conheça a Equipe</a>
+    </section>
+
+    <!-- Seção do Instagram -->
+    <section id="instagram" class="secao">
+        <h3>Pitwall</h3>
+        <p style="color: #aaa; margin-bottom: 40px; font-size: 18px;">Acompanhe as últimas atualizações da equipe no Instagram.</p>
+        
+<!-- Container principal do carrossel com largura controlada -->
+        <div style="max-width: 1000px; margin: 0 auto; overflow: hidden; padding: 0 10px;">
+            <div id="grid-instagram" style="display: flex; gap: 20px; justify-content: flex-start;"></div>
+        </div><br><br><br>
+	
+    <!-- Banner Instagram -->
+	<div style="text-align: center; margin-bottom: 30px;">
+    	<a href="https://www.instagram.com/riptoresports/" target="_blank" class="btn-sigam-insta">
+       	 <img src="instagram.png" alt="Instagram" style="width: 28px; height: 28px;">
+       	 SIGAM-NOS NO INSTAGRAM
+    	</a>
+	</div>
+	
+    </section>
+
+    <!-- Seção de Campeonatos e Agenda -->
+    <section id="agenda" class="secao">
+        
+        <!-- Bloco de Ligas -->
+        <div style="margin-bottom: 70px;">
+            <h3>Ligas Oficiais</h3>
+            <p style="color: #aaa; margin-bottom: 40px; font-size: 18px;">Competições em que a <strong>RIPTOR</strong> marca presença no grid.</p>
+            
+            <div class="grid-ligas">
+                <a href="https://www.racersav.com.br/" target="_blank" class="card-liga">
+                    <img src="https://static.wixstatic.com/media/b11d49_a10fde5619ac448dad96c70c23dc0485~mv2.png/v1/fill/w_770,h_144,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/LOGO%20RACERS%20AV%20BRANCO.png" alt="Racers AV">
+                </a>
+                <a href="https://ligaletsgo.com.br/" target="_blank" class="card-liga">
+                    <img src="https://ligaletsgo.com.br/_next/image?url=%2FLIGA%20LOGO.png&w=96&q=75" alt="Liga Let's Go">
+                </a>
+                <a href="https://nibsports.com/" target="_blank" class="card-liga">
+                    <img src="https://media.base44.com/images/public/69e840a499609ebbcc29f1f3/7bc3dc3ed_ChatGPTImage2dejulde202608_41_44.png" alt="NIB Sports">
+                </a>
+                <a href="https://www.ligaveteranos.com.br/" target="_blank" class="card-liga">
+                    <img src="https://res.cloudinary.com/dh1netrqw/image/upload/f_auto,q_auto,w_400,c_limit/v1778326391/site/qbmidb7ywusap492zor8.png" alt="Liga Veteranos">
+                </a>
+                <a href="https://ligamultitap.com.br/" target="_blank" class="card-liga">
+                    <img src="https://ligamultitap.com.br/wp-content/uploads/2025/12/logo1@4x-scaled-e1772335554788.webp" alt="Liga Multitap">
+                </a>
+            </div>
+        </div>
+
+        <!-- Bloco do Calendário (Google Agenda) -->
+        <h3>Próximas Corridas</h3>
+        <div class="calendario-container">
+            <iframe id="iframe-calendario" style="border-width:0" frameborder="0" scrolling="no"></iframe>
+        </div>
+
+        <script>
+            const iframeCalendario = document.getElementById('iframe-calendario');
+            
+            // URL base do calendário em modo AGENDA
+            const urlBase = "https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=America%2FAraguaina&showPrint=0&mode=AGENDA&showTabs=0&showNav=0&showDate=0&showCalendars=0&showTz=0&title=Riptor%20na%20Pista&showTitle=0&src=dml0b3JzYW50b3Njb250QGdtYWlsLmNvbQ&color=%23039be5";
+            
+            // Captura a data de hoje
+            const dataHoje = new Date();
+
+            // Formata no padrão Google (YYYYMMDD)
+            const formatarParaGoogle = (data) => {
+                const ano = data.getFullYear();
+                const mes = String(data.getMonth() + 1).padStart(2, '0');
+                const dia = String(data.getDate()).padStart(2, '0');
+                return `${ano}${mes}${dia}`;
+            };
+
+            // Injeta a data de hoje para forçar a lista a ocultar o passado
+            // O %2F é obrigatório para separar as datas sem quebrar o Iframe
+            const dataFormatada = formatarParaGoogle(dataHoje);
+            iframeCalendario.src = urlBase + `&dates=${dataFormatada}%2F${dataFormatada}`;
+        </script>
+
+    <!-- Seção de Pilotos -->
+    <section id="pilotos" class="secao">
+        <h3>Nossos Pilotos</h3>
+
+        <div class="grid-pilotos">
+            <div class="card-piloto">
+                <h4>Fábio Marques</h4>
+
+                <!-- Novo Container da Imagem com Overlay -->
+                <div class="piloto-imagem-container">
+                <img class="foto-piloto" src="FabioMarques_Riptor.jpg" alt="Fábio Marques">
+                    
+                    <!-- Textos do Pop-up -->
+                    <div class="piloto-info-overlay">
+                        <!-- <strong>🏆 Títulos:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            - 🥇 Campeão(2026)
+                        </p>-->
+                        
+                        <strong>⚙️ Simuladores:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            Lemans Ultimate<br>
+			    
+                        </p>
+
+			<strong>🛞 Carro Preferido:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            BMW M4 GT3
+			    
+                        </p>			
+                    </div>
+                </div>
+
+                <p style="margin-top: 15px;">
+
+
+                
+		<a href="https://www.instagram.com/fabiomarquesracing/" target="_blank"><img src="instagram.png" height="40" width="40" alt="Instagram"></a><a href="https://www.youtube.com/@Fabiomarquesracing" target="_blank"><img src="youtube.png" height="40" width="40" alt="Youtube"></a>
+		<a href="https://steamcommunity.com/profiles/76561199859715959" target="_blank"><img src="steam.png" height="40" weight="40" alt="Steam"></a>
+		</p>
+            </div>
+
+            <div class="card-piloto">
+                <h4>Fernando Nask</h4>
+
+                <!-- Novo Container da Imagem com Overlay -->
+                <div class="piloto-imagem-container">
+                <img class="foto-piloto" src="FernandoNask_Riptor.jpg" alt="Fernando Nask">
+                    
+                    <!-- Textos do Pop-up -->
+                    <div class="piloto-info-overlay">
+                        <strong>🏆 Títulos:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            - 🥇 Barsotini GT3 Series Cat. Silver (LM)<br>
+							- 🥈 1º All-Night (TMR)<br>
+							- 🥈 Copa Porsche Barsoniti Cat. Silver (LM)<br>
+                        </p>
+                        
+                        <strong>⚙️ Simuladores:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            Lemans Ultimate <br>
+			    
+                        </p>
+
+			<strong>🛞 Carro Preferido:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            BMW M4 GT3
+			    
+                        </p>			
+                    </div>
+                </div>
+
+                <p style="margin-top: 15px;">
+
+
+                
+		<a href="https://www.instagram.com/fernando.naskbr/" target="_blank"><img src="instagram.png" height="40" width="40" alt="Instagram"></a>
+		<a href="https://www.youtube.com/@fernando.naskbr" target="_blank"><img src="youtube.png" height="40" width="40" alt="Youtube"></a>
+		<a href="https://steamcommunity.com/profiles/76561199817953050" target="_blank"><img src="steam.png" heigth="40" width="40" alt="Steam"></a>
+		</p>
+            </div>
+
+            <div class="card-piloto">
+                <h4>Ícaro Albano</h4>
+                
+
+                <!-- Novo Container da Imagem com Overlay -->
+                <div class="piloto-imagem-container">
+                    <img class="foto-piloto" src="IcaroAlbano_Riptor.jpg" alt="Ícaro Albano">
+                    
+                    <!-- Textos do Pop-up -->
+                    <div class="piloto-info-overlay">
+                        <strong>🏆 Títulos:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+							- 🥇 Barsotini 12H GT3 Series Cat. Pro-Am (LM)<br>
+							- 🥇 Grid ACC 5° Temporada Cat. Pro (Renegados)<br>
+							- 🥇 WF M2 OneShot Cat. Pro (LM)<br>
+							- 🥇 Usi-Seven GT4 Sprint Cat. Pro (LM)<br>
+							- 🥇 Barsotini GT3 SeriesCat. Pro (LM)<br>
+							- 🥇 Passion For Speed Liga Let's Go Cat. Pro (Let's Go)<br>
+							- 🥈 Copa Porsche Barsotini Cat. Pro (LM)<br>
+							- 🥉 Grid ACC  4° Temporada Cat. Pro (Renegados)<br>
+							- 🥉 Stint MotorSport Racing Fera Monstro GT Series Cat. Pro (TMR)
+                        </p>
+                        
+                        <strong>⚙️ Simuladores:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            Lemans Ultimate <br>
+			    
+                        </p>
+
+			<strong>🛞 Carro Preferido:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            Mustang GT3
+			    
+                        </p>			
+                    </div>
+                </div>
+
+                <p style="margin-top: 15px;">
+		<a href="https://www.instagram.com/icaroalbano119/" target="_blank"><img src="instagram.png" height="40" width="40" alt="Instagram"></a>
+		<a href="https://www.youtube.com/@IcaroAlbano" target="_blank"><img src="youtube.png" height="40" width="40" alt="Youtube"></a>
+		<a href="https://steamcommunity.com/profiles/76561198713964154" target="_blank"><img src="steam.png" height="40" width="40" alt="Steam"></a>
+		</p>
+            </div>
+
+	    <div class="card-piloto">
+                <h4>Lisandro Antonello</h4>
+                
+                <!-- Novo Container da Imagem com Overlay -->
+                <div class="piloto-imagem-container">
+                    <img class="foto-piloto" src="LisandroAntonello_Riptor.jpg" alt="Lisandro Antonello">
+                    
+                    <!-- Textos do Pop-up -->
+                    <div class="piloto-info-overlay">
+                        <strong>🏆 Títulos:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            - 🥇 La Piazza GT3 Série A Cat. AM (Veteranos)<br>
+                            - 🥇 La Piazza GT3 Série B Cat. Silver (Veteranos)							
+                        </p>
+                        
+                        <strong>⚙️ Simuladores:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            Assetto Corsa Competizione <br>
+			   				Lemans Ultimate
+                        </p>
+
+			<strong>🛞 Carro Preferido:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            Ferrari 296 GT3
+			    
+                        </p>			
+                    </div>
+                </div>
+
+                <p style="margin-top: 15px;">
+		            <a href="https://www.instagram.com/lisandro.r.a/" target="_blank"><img src="instagram.png" height="40" width="40" 						alt="Instagram"></a>
+		            <a href="https://steamcommunity.com/profiles/76561198100447392" target="_blank"><img src="steam.png" height="40" width="40" 				alt="Steam"></a>
+		        </p>
+            </div>
+
+            <div class="card-piloto">
+                <h4>Matheus Rodrigues</h4>
+
+                <!-- Novo Container da Imagem com Overlay -->
+                <div class="piloto-imagem-container">
+                <img class="foto-piloto" src="Bumbata_Riptor.jpg" alt="Matheus Rodrigues">
+                    
+                    <!-- Textos do Pop-up -->
+                    <div class="piloto-info-overlay">
+                        <strong>🏆 Títulos:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+							- 🥇 Lemans First Challenge (Let's Go)<br>
+							- 🥇 2º La Piazza Hyper & GT3 Serie B Cat. PRO AM (Veteranos)<br>
+							- 🥉 GT3 Lemans Ultimate Grupo B (RAV)
+                        </p>
+                        
+                        <strong>⚙️ Simuladores:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            iRacing <br>
+			    
+                        </p>
+
+			<strong>🛞 Carro Preferido:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            Ferrari 296 GT3
+			    
+                        </p>			
+                    </div>
+                </div>
+
+                <p style="margin-top: 15px;">
+                
+
+
+		<a href="https://www.instagram.com/matheus_omr/" target="_blank"><img src="instagram.png" height="40" width="40" alt="Instagram"></a> 
+		<a href="https://www.youtube.com/@MatheusBumbata" target="_blank"><img src="youtube.png" height="40" width="40" alt="Youtube"></a>
+		<a href="https://steamcommunity.com/profiles/76561198074610614" target="_blank"><img src="steam.png" heigth="40" width="40" alt="Steam"></a>
+		</p>
+            </div>
+
+            <div class="card-piloto">
+                <h4>Vitor Santos</h4>
+                
+                <!-- Novo Container da Imagem com Overlay -->
+                <div class="piloto-imagem-container">
+                <img class="foto-piloto" src="VitorSantos_Riptor.jpg" alt="Vitor Santos">
+                    
+                    <!-- Textos do Pop-up -->
+                    <div class="piloto-info-overlay">
+                        <strong>🏆 Títulos:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            - 🥇 MR Nations Endurance Cup Cat. Gold (LM) <br>
+							- 🥇 3º La Piazza Doppio Giro Cat. PRO AM (Veteranos)<br>
+							- 🥇 GT3 Fixed Cup Grupo B (RAV)<br>
+							- 🥇 GT3 GT Challenge Grupo B (RAV)<br>
+							- 🥈 GT Passion for Speed Cat. PRO (Let's Go)<br>
+							- 🥉 ACC T1 2024 Cat. Silver (RAV)
+
+                        </p>
+                        
+                        <strong>⚙️ Simuladores:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            Lemans Ultimate <br>
+			    iRacing
+                        </p>
+
+			<strong>🛞 Carro Preferido:</strong>
+                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
+                            BMW M4 GT3
+			    
+                        </p>			
+                    </div>
+                </div>
+
+                <p style="margin-top: 15px;">
+
+
+
+		<a href="https://www.instagram.com/_vitusantos_/" target="_blank"><img src="instagram.png" height="40" width="40" alt="Instagram"></a> 
+		<a href="https://www.youtube.com/@VituSantosBR" target="_blank"><img src="youtube.png" height="40" width="40" alt="Youtube"></a>
+		<a href="https://steamcommunity.com/id/vitusantos/" target="_blank"><img src="steam.png" height="40" width="40" alt="Steam"></a>
+		</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Container dos vídeos -->
+    <section id="transmissao" class="secao">
+	<h3>Últimas Transmissões</h3>
+        <div id="grid-videos-pilotos" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; font-family: sans-serif;"></div>
+    </section>
+
+
+<!-- Função para ver as últimas transmissões dos pilotos -->
+
+    <script>
+    const canaisPilotos = [
+        'UCHR8v6_zu_gbLyYtNxKOkew', 
+        'UCoIzRsmxJmVvJt7J0NW9IpQ', 
+        'UCTsxB-JkWqxHUU4467pvVCg', 
+        'UCy5YU5M_fbpYO6rpyUQ-CJg' 
+    ];
+
+    const container = document.getElementById('grid-videos-pilotos');
+
+    canaisPilotos.forEach(channelId => {
+        const rssUrl = `https://youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data.items && data.items.length > 0) {
+                    const ultimoVideo = data.items[0]; 
+                    const videoIdArray = ultimoVideo.link.split('v=');
+                    const videoId = videoIdArray[1]; 
+                    const thumbnailUrl = `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`;
+                    
+                    const videoCard = document.createElement('div');
+                    videoCard.className = 'card-piloto';
+                    videoCard.style.cssText = `
+                        width: 100%;
+                        max-width: 300px;
+                        background: #fff;
+                        border: 1px solid #e0e0e0;
+                        border-radius: 8px;
+                        overflow: hidden;
+                        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+                    `;
+                    
+                    videoCard.innerHTML = `
+                        <a href="${ultimoVideo.link}" target="_blank" style="text-decoration: none; color: inherit;">
+                            <img src="${thumbnailUrl}" alt="${ultimoVideo.title}" style="width: 100%; height: auto; display: block;">
+                            <div style="padding: 15px;">
+                                <h3 style="font-size: 14px; margin: 0 0 8px 0; line-height: 1.4; color: #111; height: 40px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+                                    ${ultimoVideo.title}
+                                </h3>
+                                <p style="font-size: 12px; color: #666; margin: 0;">
+                                    🏁 <strong>${data.feed.title}</strong>
+                                </p>
+                            </div>
+                        </a>
+                    `;
+                    
+                    container.appendChild(videoCard);
+                }
+            })
+            .catch(error => console.error(`Erro ao carregar o canal ${channelId}:`, error));
+    });
+
+// Função para ler o arquivo externo e gerar os posts do Instagram com o layout oficial
+    fetch('postagens.txt')
+        .then(response => response.text()) // Lê o conteúdo do txt
+        .then(data => {
+            const linhas = data.split('\n');
+            const containerInsta = document.getElementById('grid-instagram');
+
+            // Passa por cada linha do arquivo
+            linhas.forEach(linha => {
+                const url = linha.trim(); 
+                
+                if (url && url.includes('instagram.com/p/')) {
+                    
+                    const urlLimpa = url.split('?')[0]; 
+                    // Garante a barra final na URL para a API funcionar
+                    const urlFinal = urlLimpa.endsWith('/') ? urlLimpa : urlLimpa + '/';
+                    
+                    // Cria a estrutura oficial de Blockquote exigida pelo Instagram
+                    const blockquote = document.createElement('blockquote');
+                    blockquote.className = 'instagram-media';
+                    blockquote.setAttribute('data-instgrm-permalink', urlFinal + '?utm_source=ig_embed');
+                    blockquote.setAttribute('data-instgrm-version', '14');
+                    
+                    // Mantém a identidade e o tamanho padrão da Riptor
+                    blockquote.style.background = '#FFF';
+                    blockquote.style.border = '0';
+                    blockquote.style.borderRadius = '8px';
+                    blockquote.style.boxShadow = '0 0 15px rgba(255, 211, 0, 0.2)';
+                    blockquote.style.margin = '1px';
+                    blockquote.style.maxWidth = '260px';
+                    blockquote.style.minWidth = '260px';
+                    blockquote.style.padding = '0';
+                    blockquote.style.width = 'calc(100% - 2px)';
+
+                    containerInsta.appendChild(blockquote);
+                }
+            });
+
+            // Força o carregamento do script com HTTPS e processa na hora certa
+            if (!window.instgrm) {
+                const script = document.createElement('script');
+                script.src = "https://www.instagram.com/embed.js";
+                script.async = true;
+                script.onload = () => window.instgrm.Embeds.process(); // Gatilho de segurança
+                document.body.appendChild(script);
+            } else {
+                window.instgrm.Embeds.process();
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao carregar o pitwall:', error);
+            // Mensagem vermelha que aparecerá se você tentar testar o arquivo localmente
+            document.getElementById('grid-instagram').innerHTML = '<p style="color: #ff3333; font-weight: bold; text-align: center;">As postagens foram bloqueadas pela segurança do navegador local. Faça o upload dos arquivos index.html e postagens.txt para o seu GitHub Pages para visualizar a galeria funcionando.</p>';
+        });
+
+
+	</script>
+
+    <!-- Seção de Simuladores -->
+    <section id="simuladores" class="secao">
+        <h3>Plataformas de Competição</h3>
+        <p>Atuação oficial da equipe nas principais simulações do mercado:</p>
+        <ul style="list-style: none; padding: 0; font-size: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
+            <li><a href="https://assettocorsa.gg/assetto-corsa-competizione/" target="_blank"><img src="acc.png" height="50" alt="ACC"></a></li>
+            <li><a href="https://www.iracing.com/" target="_blank"><img src="iracing.png" height="40" alt="iRacing"></a></li>
+            <li><a href="https://lemansultimate.com/" target="_blank"><img src="lmu.png" height="40" alt="LMU"></a></li>
+        </ul>
+    </section>
+
+<!-- Seção de Contato -->
+    <section id="contato" class="secao">
+        <h3>Contato</h3>
+        <p style="color: #aaa; margin-bottom: 40px; font-size: 18px;">Entre no nosso vácuo. Envie uma mensagem para a equipe.</p>
+        
+        <div style="max-width: 600px; margin: 0 auto; background-color: var(--cor-painel); padding: 30px; border-radius: 8px; border-left: 4px solid var(--cor-destaque); box-shadow: 0 0 15px rgba(0,0,0,0.5);">
+            
+            <form action="https://formsubmit.co/f7641bd9b8f734039eef3d7347cf3cb1" method="POST" class="form-contato" id="form-contato-ajax">
+    <input type="hidden" name="_captcha" value="false">
+    
+    <div class="grupo-input">
+        <label for="nome">Nome / Nickname</label>
+        <input type="text" id="nome" name="nome" required>
     </div>
-    <h2>#BORNTODOMINATE</h2>
+    
+    <div class="grupo-input">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    
+    <div class="grupo-input">
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+    </div>
+    
+    <button type="submit" class="btn btn-enviar">Enviar Mensagem</button>
+</form>
+
+<!-- Mensagem de Confirmação de Impacto (Oculta por padrão) -->
+<div id="mensagem-sucesso" style="display: none; text-align: center; padding: 40px 20px; border: 1px solid var(--cor-destaque); border-radius: 8px; background-color: #121212;">
+    <h4 style="color: var(--cor-destaque); font-size: 26px; margin-bottom: 10px; text-transform: uppercase;">Contato Estabelecido</h4>
+    <p style="font-size: 18px; color: #fff; margin: 0;">Mensagem capturada no nosso vácuo. Nos vemos na pista!</p>
+</div>
+    </section>
+
+
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 Riptor esports. Todos os direitos reservados. www.riptor.com.br</p>
+    </footer>
+
+<!-- Botão Voltar ao Topo -->
+    <a href="#hero" class="btn-topo" title="Voltar ao início">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </a>
+<script>
+    // Intercepta o envio do formulário de contato
+    document.getElementById('form-contato-ajax').addEventListener('submit', function(e) {
+        e.preventDefault(); // Impede que a página recarregue
+
+        const form = e.target;
+        const data = new FormData(form);
+        const botaoSubmit = form.querySelector('.btn-enviar');
+        const mensagemSucesso = document.getElementById('mensagem-sucesso');
+
+        // Altera o texto do botão para indicar carregamento
+        const textoOriginal = botaoSubmit.innerText;
+        botaoSubmit.innerText = 'Aquecendo os pneus...';
+        botaoSubmit.disabled = true;
+
+        // Envia os dados para o FormSubmit em segundo plano
+        fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                form.style.display = 'none'; // Esconde os campos do formulário
+                mensagemSucesso.style.display = 'block'; // Exibe a mensagem de impacto
+            } else {
+                alert('Bandeira vermelha: Aconteceu um erro no grid. Tente enviar novamente.');
+                botaoSubmit.innerText = textoOriginal;
+                botaoSubmit.disabled = false;
+            }
+        })
+        .catch(error => {
+            alert('Falha na comunicação com os boxes. Verifique sua internet.');
+            botaoSubmit.innerText = textoOriginal;
+            botaoSubmit.disabled = false;
+        });
+    });
+</script>
 </body>
 </html>
