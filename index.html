@@ -532,6 +532,58 @@
                     background: var(--cor-destaque);
                     border-radius: 4px;
                 }
+        /* Estilos do Carrossel Infinito de Pinturas */
+        .carrossel-infinito {
+            width: 100%;
+            overflow: hidden; /* Oculta a barra de rolagem e as imagens fora da tela */
+            position: relative;
+            padding: 20px 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+        }
+
+        .carrossel-track {
+            display: flex;
+            width: max-content; /* Permite que o contêiner estique o necessário para alinhar todas as fotos */
+            animation: scroll-pinturas 35s linear infinite; /* 35s é a velocidade do loop. Reduza o valor para acelerar */
+        }
+
+        /* Pausa a rolagem infinita quando o usuário posiciona o mouse sobre qualquer imagem */
+        .carrossel-infinito:hover .carrossel-track {
+            animation-play-state: paused;
+        }
+
+        .carrossel-track img {
+            width: 550px; /* Redimensiona proporcionalmente a proporção 1050x420 original */
+            height: auto;
+            margin-right: 30px; /* Cria o espaço entre as fotos sem quebrar o cálculo matemático do CSS */
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(255, 211, 0, 0.1);
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+
+        .carrossel-track img:hover {
+            border-color: var(--cor-destaque);
+            box-shadow: 0 0 20px rgba(255, 211, 0, 0.4);
+            transform: scale(1.02);
+        }
+
+        /* Mecânica do Loop Infinito */
+        @keyframes scroll-pinturas {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Move a faixa exatamente pela metade, reiniciando o loop de forma imperceptível */
+        }
+
+        /* Ajuste de responsividade para Dispositivos Móveis */
+        @media (max-width: 768px) {
+            .carrossel-track img {
+                width: 320px;
+                margin-right: 15px;
+            }
+        }
+        
         /* Contêiner individual da pintura no carrossel */
         .carro-card {
             position: relative;
