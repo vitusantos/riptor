@@ -32,7 +32,7 @@
         background-size: 14px 14px;
         background-position: 0 0, 7px 7px;
         background-attachment: fixed;
-    }
+        }
         header {
             background-color: #000;
             padding: 15px 20px;
@@ -116,7 +116,7 @@
         /* Película reduzida de 85% para 40% para revelar a fibra de carbono */
         background-color: rgba(0, 0, 0, 0.4); 
         border-bottom: 1px solid #222;
-    }
+        }
 
         .secao h3 {
             font-size: 32px;
@@ -146,7 +146,7 @@
     	    background-color: #252525;
     	    box-shadow: 0 0 15px rgba(255, 211, 0, 0.2);
     	    transform: translateY(-5px);
-	}
+	    }
 
         .card-piloto img.foto-piloto {
             width: 100%;
@@ -242,7 +242,7 @@
         /* Filtros para forçar o Dark Mode: Inverte as luzes e corrige as cores dos eventos */
         filter: invert(0.92) hue-rotate(180deg) brightness(1.05) contrast(1.1);
         border-radius: 8px;
-    }
+        }
 
         /* AJUSTES PARA DISPOSITIVOS MÓVEIS */
         @media (max-width: 768px) {
@@ -318,224 +318,276 @@
                 box-sizing: border-box;
             }
         }
-/* Estilização da Barra de Rolagem */
-::-webkit-scrollbar {
-    width: 10px;
-}
-::-webkit-scrollbar-track {
-    background: #121212;
-}
-::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 5px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: var(--cor-destaque);
-}
-
-/* Efeito de Overlay (Pop-up dinâmico) nas fotos dos pilotos */
-        .piloto-imagem-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 4px;
-            margin-top: 10px;
+        /* Estilização da Barra de Rolagem */
+        ::-webkit-scrollbar {
+            width: 10px;
         }
-
-        .piloto-imagem-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: all 0.4s ease;
-        }
-
-        .piloto-info-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(10, 10, 10, 0.95); /* Fundo quase sólido para legibilidade */
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start; /* Alinha o conteúdo no topo do card */
-            padding: 15px;
-            box-sizing: border-box;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.4s ease;
-            font-size: 13px;
-            text-align: left;
-            border: 1px solid var(--cor-destaque);
-            border-radius: 4px;
-            
-            /* Adicionado para criar a barra de rolagem interna */
-            overflow-y: auto; 
-            scrollbar-width: thin;
-            scrollbar-color: var(--cor-destaque) #121212;
-        }
-
-        /* Estilização da barra de rolagem interna do pop-up */
-        .piloto-info-overlay::-webkit-scrollbar {
-            width: 5px;
-        }
-        .piloto-info-overlay::-webkit-scrollbar-track {
+        ::-webkit-scrollbar-track {
             background: #121212;
-            border-radius: 4px;
         }
-        .piloto-info-overlay::-webkit-scrollbar-thumb {
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
             background: var(--cor-destaque);
-            border-radius: 4px;
         }
 
-        .piloto-info-overlay strong {
-            color: var(--cor-destaque);
-            font-size: 16px;
-        }
+        /* Efeito de Overlay (Pop-up dinâmico) nas fotos dos pilotos */
+                .piloto-imagem-container {
+                    position: relative;
+                    overflow: hidden;
+                    border-radius: 4px;
+                    margin-top: 10px;
+                }
 
-        /* O que acontece ao passar o mouse no card */
-        .card-piloto:hover .piloto-info-overlay {
-            opacity: 1;
-            transform: translateY(0);
-        }
+                .piloto-imagem-container img {
+                    width: 100%;
+                    height: auto;
+                    display: block;
+                    transition: all 0.4s ease;
+                }
 
-        .card-piloto:hover .piloto-imagem-container img {
-            transform: scale(1.1); /* Dá um zoom suave na foto do piloto */
-            filter: grayscale(100%) blur(2px); /* Remove a cor e desfoca o fundo para o texto ficar legível */
-        }
+                .piloto-info-overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(10, 10, 10, 0.95); /* Fundo quase sólido para legibilidade */
+                    color: #fff;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start; /* Alinha o conteúdo no topo do card */
+                    padding: 15px;
+                    box-sizing: border-box;
+                    opacity: 0;
+                    transform: translateY(20px);
+                    transition: all 0.4s ease;
+                    font-size: 13px;
+                    text-align: left;
+                    border: 1px solid var(--cor-destaque);
+                    border-radius: 4px;
+                    
+                    /* Adicionado para criar a barra de rolagem interna */
+                    overflow-y: auto; 
+                    scrollbar-width: thin;
+                    scrollbar-color: var(--cor-destaque) #121212;
+                }
 
-/* Botão Flutuante - Voltar ao Topo */
-        .btn-topo {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--cor-destaque);
-            color: #000;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-            transition: all 0.3s ease;
-            z-index: 1000; /* Garante que o botão fique sobreposto a todos os outros elementos */
-        }
+                /* Estilização da barra de rolagem interna do pop-up */
+                .piloto-info-overlay::-webkit-scrollbar {
+                    width: 5px;
+                }
+                .piloto-info-overlay::-webkit-scrollbar-track {
+                    background: #121212;
+                    border-radius: 4px;
+                }
+                .piloto-info-overlay::-webkit-scrollbar-thumb {
+                    background: var(--cor-destaque);
+                    border-radius: 4px;
+                }
 
-        .btn-topo:hover {
-            background-color: #fff;
-            box-shadow: 0 0 15px rgba(255, 211, 0, 0.8);
-            transform: translateY(-5px);
-        }
+                .piloto-info-overlay strong {
+                    color: var(--cor-destaque);
+                    font-size: 16px;
+                }
 
-        .btn-topo svg {
-            width: 24px;
-            height: 24px;
-        }
+                /* O que acontece ao passar o mouse no card */
+                .card-piloto:hover .piloto-info-overlay {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
 
-        /* Ajuste de tamanho e margem para telas de celular */
-        @media (max-width: 768px) {
-            .btn-topo {
-                bottom: 20px;
-                right: 20px;
-                width: 45px;
-                height: 45px;
-            }
-        }
+                .card-piloto:hover .piloto-imagem-container img {
+                    transform: scale(1.1); /* Dá um zoom suave na foto do piloto */
+                    filter: grayscale(100%) blur(2px); /* Remove a cor e desfoca o fundo para o texto ficar legível */
+                }
 
-/* Estilos do Formulário de Contato Alinhados */
-        .form-contato {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            width: 100%;
-        }
+        /* Botão Flutuante - Voltar ao Topo */
+                .btn-topo {
+                    position: fixed;
+                    bottom: 30px;
+                    right: 30px;
+                    background-color: var(--cor-destaque);
+                    color: #000;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-decoration: none;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+                    transition: all 0.3s ease;
+                    z-index: 1000; /* Garante que o botão fique sobreposto a todos os outros elementos */
+                }
 
-        .grupo-input {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            text-align: left;
-            width: 100%;
-            box-sizing: border-box;
-        }
+                .btn-topo:hover {
+                    background-color: #fff;
+                    box-shadow: 0 0 15px rgba(255, 211, 0, 0.8);
+                    transform: translateY(-5px);
+                }
 
-        .grupo-input label {
-            font-weight: bold;
-            color: var(--cor-texto);
-            font-size: 14px;
-            text-transform: uppercase;
-        }
+                .btn-topo svg {
+                    width: 24px;
+                    height: 24px;
+                }
 
-        .grupo-input input,
-        .grupo-input textarea {
-            background-color: #121212;
-            border: 1px solid #333;
-            color: #fff;
-            padding: 12px;
-            border-radius: 4px;
-            font-family: inherit;
-            width: 100%;
-            box-sizing: border-box;
-            transition: all 0.3s ease;
-        }
+                /* Ajuste de tamanho e margem para telas de celular */
+                @media (max-width: 768px) {
+                    .btn-topo {
+                        bottom: 20px;
+                        right: 20px;
+                        width: 45px;
+                        height: 45px;
+                    }
+                }
 
-        .grupo-input input:focus,
-        .grupo-input textarea:focus {
-            outline: none;
-            border-color: var(--cor-destaque);
-            box-shadow: 0 0 8px rgba(255, 211, 0, 0.3);
-        }
+        /* Estilos do Formulário de Contato Alinhados */
+                .form-contato {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    width: 100%;
+                }
 
-        .btn-enviar {
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            font-size: 16px;
-            margin-top: 10px;
-        }
+                .grupo-input {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    text-align: left;
+                    width: 100%;
+                    box-sizing: border-box;
+                }
 
-        .btn-enviar:hover {
-            background-color: #fff;
-            box-shadow: 0 0 15px rgba(255, 211, 0, 0.6);
-        }
+                .grupo-input label {
+                    font-weight: bold;
+                    color: var(--cor-texto);
+                    font-size: 14px;
+                    text-transform: uppercase;
+                }
 
-/* Transforma o grid do Instagram em um carrossel horizontal */
-        #grid-instagram {
-            display: flex;
-            flex-wrap: nowrap !important; /* Impede que os posts quebrem para a linha de baixo */
-            overflow-x: auto; /* Habilita a barra de rolagem lateral */
-            scroll-snap-type: x mandatory; /* Faz o carrossel "encaixar" suavemente em cada post */
-            gap: 20px;
-            padding-bottom: 20px;
-            justify-content: flex-start !important; /* Alinha os itens à esquerda no carrossel */
-            scrollbar-width: thin; /* Barra de rolagem fina para navegadores modernos */
-            scrollbar-color: var(--cor-destaque) #121212;
-        }
+                .grupo-input input,
+                .grupo-input textarea {
+                    background-color: #121212;
+                    border: 1px solid #333;
+                    color: #fff;
+                    padding: 12px;
+                    border-radius: 4px;
+                    font-family: inherit;
+                    width: 100%;
+                    box-sizing: border-box;
+                    transition: all 0.3s ease;
+                }
 
-        /* Faz cada post encaixar perfeitamente no scroll */
-        #grid-instagram > blockquote {
-            flex: 0 0 auto;
-            scroll-snap-align: start;
-        }
+                .grupo-input input:focus,
+                .grupo-input textarea:focus {
+                    outline: none;
+                    border-color: var(--cor-destaque);
+                    box-shadow: 0 0 8px rgba(255, 211, 0, 0.3);
+                }
 
-        /* Estilização da barra de rolagem horizontal do carrossel */
-        #grid-instagram::-webkit-scrollbar {
-            height: 8px;
-        }
-        #grid-instagram::-webkit-scrollbar-track {
-            background: #121212;
-            border-radius: 4px;
-        }
-        #grid-instagram::-webkit-scrollbar-thumb {
-            background: var(--cor-destaque);
-            border-radius: 4px;
-        }
+                .btn-enviar {
+                    border: none;
+                    cursor: pointer;
+                    width: 100%;
+                    font-size: 16px;
+                    margin-top: 10px;
+                }
 
-    </style>
-</head>
-<body>
+                .btn-enviar:hover {
+                    background-color: #fff;
+                    box-shadow: 0 0 15px rgba(255, 211, 0, 0.6);
+                }
+
+        /* Transforma o grid do Instagram em um carrossel horizontal */
+                #grid-instagram {
+                    display: flex;
+                    flex-wrap: nowrap !important; /* Impede que os posts quebrem para a linha de baixo */
+                    overflow-x: auto; /* Habilita a barra de rolagem lateral */
+                    scroll-snap-type: x mandatory; /* Faz o carrossel "encaixar" suavemente em cada post */
+                    gap: 20px;
+                    padding-bottom: 20px;
+                    justify-content: flex-start !important; /* Alinha os itens à esquerda no carrossel */
+                    scrollbar-width: thin; /* Barra de rolagem fina para navegadores modernos */
+                    scrollbar-color: var(--cor-destaque) #121212;
+                }
+
+                /* Faz cada post encaixar perfeitamente no scroll */
+                #grid-instagram > blockquote {
+                    flex: 0 0 auto;
+                    scroll-snap-align: start;
+                }
+
+                /* Estilização da barra de rolagem horizontal do carrossel */
+                #grid-instagram::-webkit-scrollbar {
+                    height: 8px;
+                }
+                #grid-instagram::-webkit-scrollbar-track {
+                    background: #121212;
+                    border-radius: 4px;
+                }
+                #grid-instagram::-webkit-scrollbar-thumb {
+                    background: var(--cor-destaque);
+                    border-radius: 4px;
+                }
+        /* Estilos do Carrossel Infinito de Pinturas */
+                .carrossel-infinito {
+                    width: 100%;
+                    overflow: hidden; /* Oculta a barra de rolagem e as imagens fora da tela */
+                    position: relative;
+                    padding: 20px 0;
+                    background-color: rgba(0, 0, 0, 0.3);
+                    border-top: 1px solid #222;
+                    border-bottom: 1px solid #222;
+                }
+
+                .carrossel-track {
+                    display: flex;
+                    width: max-content; /* Permite que o contêiner estique o necessário para alinhar todas as fotos */
+                    animation: scroll-pinturas 35s linear infinite; /* 35s é a velocidade do loop. Reduza o valor para acelerar */
+                }
+
+                /* Pausa a rolagem infinita quando o usuário posiciona o mouse sobre qualquer imagem */
+                .carrossel-infinito:hover .carrossel-track {
+                    animation-play-state: paused;
+                }
+
+                .carrossel-track img {
+                    width: 550px; /* Redimensiona proporcionalmente a proporção 1050x420 original */
+                    height: auto;
+                    margin-right: 30px; /* Cria o espaço entre as fotos sem quebrar o cálculo matemático do CSS */
+                    border-radius: 8px;
+                    box-shadow: 0 0 15px rgba(255, 211, 0, 0.1);
+                    border: 1px solid #333;
+                    transition: all 0.3s ease;
+                }
+
+                .carrossel-track img:hover {
+                    border-color: var(--cor-destaque);
+                    box-shadow: 0 0 20px rgba(255, 211, 0, 0.4);
+                    transform: scale(1.02);
+                }
+
+                /* Mecânica do Loop Infinito */
+                @keyframes scroll-pinturas {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-50%); } /* Move a faixa exatamente pela metade, reiniciando o loop de forma imperceptível */
+                }
+
+                /* Ajuste de responsividade para Dispositivos Móveis */
+                @media (max-width: 768px) {
+                    .carrossel-track img {
+                        width: 320px;
+                        margin-right: 15px;
+                    }
+                }
+
+
+            </style>
+        </head>
+        <body>
 
     <!-- Cabeçalho e Navegação -->
     <header>
@@ -547,7 +599,7 @@
             <a href="#hero">Início</a>
             <a href="#agenda">Na Pista</a>
             <a href="#pilotos">Pilotos</a>
-	    <a href="#transmissao">Transmissões</a>
+	        <a href="#transmissao">Transmissões</a>
             <a href="#simuladores">Simuladores</a>
             <a href="#contato">Contato</a>
         </nav>
@@ -927,6 +979,41 @@
 
         </div>
     </section>
+
+    <!-- Seção de Pinturas Oficiais -->
+    <section id="pinturas" class="secao">
+        <h3>Nossas Máquinas</h3>
+        <p style="color: #aaa; margin-bottom: 40px; font-size: 18px;">Pinturas oficiais da <strong>Riptor</strong> nas pistas.</p>
+        
+        <div class="carrossel-infinito">
+            <div class="carrossel-track">
+                <!-- CONJUNTO 1: Substitua o src pelos nomes reais das suas imagens -->
+                <img src="gt3aston.jpg" alt="Aston Martin GT3">
+                <img src="gt3bmw.jpg" alt="BMW M4 GT3">
+                <img src="gt3corvette.jpg" alt="Corvette GT3">
+                <img src="gteferrari.jpg" alt="Ferrari 296 GT3">
+                <img src="gt3lambo.jpg" alt="Lamborguini Huracan GT3">
+                <img src="gt3lexus.jpg" alt="Lexus GT3">
+                <img src="gt3mclaren.jpg" alt="Mclaren GT3">
+                <img src="gt3mercedes.jpg" alt="Mercedes GT3">
+                <img src="gt3mustang.jpg" alt="Mustang GT3">
+                <img src="gt3porsche.jpg" alt="Porsche GT3">
+                                
+                <!-- CONJUNTO 2: Cópia idêntica e obrigatória do Conjunto 1 para o loop infinito -->
+                <img src="gt3aston.jpg" alt="Aston Martin GT3">
+                <img src="gt3bmw.jpg" alt="BMW M4 GT3">
+                <img src="gt3corvette.jpg" alt="Corvette GT3">
+                <img src="gteferrari.jpg" alt="Ferrari 296 GT3">
+                <img src="gt3lambo.jpg" alt="Lamborguini Huracan GT3">
+                <img src="gt3lexus.jpg" alt="Lexus GT3">
+                <img src="gt3mclaren.jpg" alt="Mclaren GT3">
+                <img src="gt3mercedes.jpg" alt="Mercedes GT3">
+                <img src="gt3mustang.jpg" alt="Mustang GT3">
+                <img src="gt3porsche.jpg" alt="Porsche GT3">
+            </div>
+        </div>
+    </section>
+
 
     <!-- Container dos vídeos -->
     <section id="transmissao" class="secao">
