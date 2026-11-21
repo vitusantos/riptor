@@ -38,7 +38,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="logo_riptor.png">
     <style>
-	h1, h2, h3, h4, .btn, nav a, .btn-sigam-insta {
+	h1, h2, h3, h4, .btn, nav a, .btn-sigam-insta, .resultado-posicao {
     	font-family: 'Rajdhani', sans-serif;
 	}
 	html {
@@ -79,20 +79,14 @@
             text-align: center;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 12px;
-            text-transform: uppercase;
-        }
-
         header img {
             max-width: 100%;
             height: auto;
         }
 
-        header h3 {
-            margin: 5px 0 0 0;
-            font-size: 14px;
+        header .slogan {
+            font: 700 14px Rajdhani, sans-serif;
+            margin: 5px 0 0;
         }
 
         nav {
@@ -115,20 +109,99 @@
         }
 
         .hero {
-            text-align: center;
-            padding: 120px 20px;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('sua-imagem-de-fundo.jpg') center/cover;
+            background: #0b0b0b;
+            border-bottom: 1px solid #333;
         }
 
-        .hero h2 {
-            font-size: 48px;
-            margin: 0 0 10px 0;
+        .hero-conteudo {
+            display: grid;
+            grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
+            align-items: center;
+            gap: clamp(20px, 4vw, 56px);
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: clamp(32px, 6vw, 84px) clamp(20px, 4vw, 56px);
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 5.4vw, 82px);
+            line-height: 0.94;
+            margin: 0;
             text-transform: uppercase;
         }
 
         .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
+            color: #d4d4d4;
+            max-width: 38ch;
+            font-size: 18px;
+            line-height: 1.55;
+            margin: 22px 0 26px;
+        }
+
+        .hero-acoes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .hero-foto {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-bottom: 3px solid var(--cor-destaque);
+        }
+
+        .btn.btn-secundario {
+            color: var(--cor-texto);
+            background: #202020;
+        }
+
+        a:focus-visible, summary:focus-visible, button:focus-visible {
+            outline: 2px solid var(--cor-destaque);
+            outline-offset: 4px;
+        }
+
+        .corridas-conteudo {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto 48px;
+            text-align: left;
+        }
+
+        .corridas-conteudo article {
+            background: #161616;
+            border: 1px solid #454545;
+            border-top: 3px solid var(--cor-destaque);
+            padding: clamp(18px, 3vw, 32px);
+        }
+
+        .corridas-conteudo h3 {
+            margin: 0 0 12px;
+        }
+
+        .corridas-conteudo p {
+            color: #d4d4d4;
+            line-height: 1.55;
+        }
+
+        .resultado-posicao {
+            display: block;
+            color: var(--cor-destaque);
+            font-size: 72px;
+            line-height: 1;
+        }
+
+        .resultado-corrida {
+            margin: 4px 0 0;
+            font-size: 28px;
+        }
+
+        .agenda-link {
+            display: inline-block;
+            color: var(--cor-destaque);
+            margin-top: 12px;
         }
 
         .btn {
@@ -271,6 +344,7 @@
         left: 0;
         width: 100%;
         height: 100%;
+        border: 0;
         /* Filtros para forçar o Dark Mode: Inverte as luzes e corrige as cores dos eventos */
         filter: invert(0.92) hue-rotate(180deg) brightness(1.05) contrast(1.1);
         border-radius: 8px;
@@ -289,16 +363,12 @@
                 gap: 15px;
             }
 
-            .hero {
-                padding: 80px 15px;
+            .hero-conteudo, .corridas-conteudo {
+                grid-template-columns: minmax(0, 1fr);
             }
 
-            .hero h2 {
-                font-size: 32px;
-            }
-
-            .hero p {
-                font-size: 16px;
+            .hero-foto {
+                grid-row: 1;
             }
 
             .secao {
@@ -310,7 +380,7 @@
             }
 
             .calendario-container {
-                height: 450px; /* Altura um pouco maior no celular para facilitar a leitura e o toque */
+                height: 340px; /* Altura um pouco maior no celular para facilitar a leitura e o toque */
             }
         }
 	.btn-sigam-insta {
@@ -365,76 +435,39 @@
             background: var(--cor-destaque);
         }
 
-        /* Efeito de Overlay (Pop-up dinâmico) nas fotos dos pilotos */
-                .piloto-imagem-container {
-                    position: relative;
-                    overflow: hidden;
-                    border-radius: 4px;
-                    margin-top: 10px;
-                }
+        #pilotos .foto-piloto {
+            display: block;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            object-position: center top;
+        }
 
-                .piloto-imagem-container img {
-                    width: 100%;
-                    height: auto;
-                    display: block;
-                    transition: all 0.4s ease;
-                }
+        .piloto-destaques {
+            padding-left: 18px;
+            color: #dbdbdb;
+            font-size: 14px;
+            line-height: 1.45;
+        }
 
-                .piloto-info-overlay {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background-color: rgba(10, 10, 10, 0.95); /* Fundo quase sólido para legibilidade */
-                    color: #fff;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: flex-start; /* Alinha o conteúdo no topo do card */
-                    padding: 15px;
-                    box-sizing: border-box;
-                    opacity: 0;
-                    transform: translateY(20px);
-                    transition: all 0.4s ease;
-                    font-size: 13px;
-                    text-align: left;
-                    border: 1px solid var(--cor-destaque);
-                    border-radius: 4px;
-                    
-                    /* Adicionado para criar a barra de rolagem interna */
-                    overflow-y: auto; 
-                    scrollbar-width: thin;
-                    scrollbar-color: var(--cor-destaque) #121212;
-                }
+        .piloto-destaques li + li {
+            margin-top: 6px;
+        }
 
-                /* Estilização da barra de rolagem interna do pop-up */
-                .piloto-info-overlay::-webkit-scrollbar {
-                    width: 5px;
-                }
-                .piloto-info-overlay::-webkit-scrollbar-track {
-                    background: #121212;
-                    border-radius: 4px;
-                }
-                .piloto-info-overlay::-webkit-scrollbar-thumb {
-                    background: var(--cor-destaque);
-                    border-radius: 4px;
-                }
+        .piloto-perfil {
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px solid #515151;
+        }
 
-                .piloto-info-overlay strong {
-                    color: var(--cor-destaque);
-                    font-size: 16px;
-                }
+        .piloto-perfil summary {
+            color: var(--cor-destaque);
+            cursor: pointer;
+            font-weight: bold;
+        }
 
-                /* O que acontece ao passar o mouse no card */
-                .card-piloto:hover .piloto-info-overlay {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-
-                .card-piloto:hover .piloto-imagem-container img {
-                    transform: scale(1.1); /* Dá um zoom suave na foto do piloto */
-                    filter: grayscale(100%) blur(2px); /* Remove a cor e desfoca o fundo para o texto ficar legível */
-                }
+        .piloto-perfil[open] summary {
+            margin-bottom: 12px;
+        }
 
         /* Botão Flutuante - Voltar ao Topo */
                 .btn-topo {
@@ -547,9 +580,12 @@
                 }
 
                 /* Faz cada post encaixar perfeitamente no scroll */
-                #grid-instagram > blockquote {
+                #grid-instagram > blockquote,
+                #grid-instagram > iframe {
                     flex: 0 0 auto;
                     scroll-snap-align: start;
+                    max-width: 100% !important;
+                    min-width: 0 !important;
                 }
 
                 /* Estilização da barra de rolagem horizontal do carrossel */
@@ -683,8 +719,8 @@
     <!-- Cabeçalho e Navegação -->
     <header>
         <div class="logo-container">
-            <h1><img src="logo_transparente.png" width="250" alt="Riptor Logo"></h1>
-            <h3>#BORNTODOMINATE</h3>
+            <a href="#hero"><img src="logo_transparente.png" width="250" alt="Riptor eSports"></a>
+            <p class="slogan">#BORNTODOMINATE</p>
         </div>
         <nav>
             <a href="#hero">Início</a>
@@ -698,39 +734,40 @@
 
     <!-- Área de Destaque -->
     <section id="hero" class="hero">
-        <h2>Instinto Predatório nas Pistas</h2>
-        <p style="max-width: 800px; margin: 0 auto 30px auto; line-height: 1.6;">
-            A <strong>RIPTOR eSports</strong> é uma força predatória no cenário do automobilismo virtual de alta performance. 
-            Competindo no mais alto nível em simuladores consagrados, 
-            nossa equipe é a síntese exata entre inovação tecnológica e precisão milimétrica. Nas pistas, unimos estratégia 
-            implacável a uma identidade visual agressiva e marcante, dominando cada traçado com a ferocidade de quem corre para vencer.
-        </p>
-        <a href="#pilotos" class="btn">Conheça a Equipe</a>
-    </section>
-
-    <!-- Seção do Instagram -->
-    <section id="instagram" class="secao">
-        <h3>Pitwall</h3>
-        <p style="color: #aaa; margin-bottom: 40px; font-size: 18px;">Acompanhe as últimas atualizações da equipe no Instagram.</p>
-        
-<!-- Container principal do carrossel com largura controlada -->
-        <div style="max-width: 1000px; margin: 0 auto; overflow: hidden; padding: 0 10px;">
-            <div id="grid-instagram" style="display: flex; gap: 20px; justify-content: flex-start;"></div>
-        </div><br><br><br>
-	
-    <!-- Banner Instagram -->
-	<div style="text-align: center; margin-bottom: 30px;">
-    	<a href="https://www.instagram.com/riptoresports/" target="_blank" class="btn-sigam-insta">
-       	 <img src="instagram.png" alt="Instagram" style="width: 28px; height: 28px;">
-       	 SIGAM-NOS NO INSTAGRAM
-    	</a>
-	</div>
-	
+        <div class="hero-conteudo">
+            <div>
+                <h1>Instinto predatório nas pistas</h1>
+                <p>Somos a Riptor eSports, equipe brasileira de endurance virtual no Le Mans Ultimate e no iRacing.</p>
+                <div class="hero-acoes">
+                    <a href="#agenda" class="btn">Ver corridas</a>
+                    <a href="#transmissao" class="btn btn-secundario">Ver transmissões</a>
+                </div>
+            </div>
+            <img class="hero-foto" src="gt3bmw.jpg" width="1050" height="419" fetchpriority="high" alt="BMW M4 GT3 com a pintura da Riptor eSports">
+        </div>
     </section>
 
     <!-- Seção de Campeonatos e Agenda -->
     <section id="agenda" class="secao">
-        
+        <h2>Na Pista</h2>
+        <div class="corridas-conteudo">
+            <article>
+                <h3>Próximas corridas</h3>
+                <div class="calendario-container">
+                    <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;ctz=America%2FSao_Paulo&amp;showPrint=0&amp;mode=AGENDA&amp;showTabs=0&amp;showNav=0&amp;showDate=0&amp;showCalendars=0&amp;showTz=0&amp;title=Riptor%20na%20Pista&amp;showTitle=0&amp;src=dml0b3JzYW50b3Njb250QGdtYWlsLmNvbQ&amp;color=%23039be5" title="Calendário de corridas da Riptor eSports" loading="lazy"></iframe>
+                </div>
+                <a class="agenda-link" href="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;ctz=America%2FSao_Paulo&amp;showPrint=0&amp;mode=AGENDA&amp;showTabs=0&amp;showNav=0&amp;showDate=0&amp;showCalendars=0&amp;showTz=0&amp;title=Riptor%20na%20Pista&amp;showTitle=0&amp;src=dml0b3JzYW50b3Njb250QGdtYWlsLmNvbQ&amp;color=%23039be5">Abrir calendário no Google Agenda</a>
+            </article>
+            <article>
+                <h3>Resultado em destaque</h3>
+                <strong class="resultado-posicao" aria-label="5º lugar">P5</strong>
+                <h4 class="resultado-corrida">6h de Monza</h4>
+                <p>Le Mans Ultimate · <time datetime="2026-11-20">20 de novembro de 2026</time></p>
+                <p>Bruno Castaldini, Fernando Nask e Rodrigo Da Rosa</p>
+                <a class="btn" href="https://www.youtube.com/watch?v=VRRGfISb2sI">Assistir ao replay</a>
+            </article>
+        </div>
+
         <!-- Bloco de Ligas -->
         <div style="margin-bottom: 70px;">
             <h3>Ligas Oficiais</h3>
@@ -755,34 +792,20 @@
             </div>
         </div>
 
-        <!-- Bloco do Calendário (Google Agenda) -->
-        <h3>Próximas Corridas</h3>
-        <div class="calendario-container">
-            <iframe id="iframe-calendario" style="border-width:0" frameborder="0" scrolling="no"></iframe>
+    </section>
+
+    <!-- Seção do Instagram -->
+    <section id="instagram" class="secao">
+        <h3>Pitwall</h3>
+        <p style="color: #aaa; margin-bottom: 40px; font-size: 18px;">Acompanhe as últimas atualizações da equipe no Instagram.</p>
+        <div style="max-width: 1000px; margin: 0 auto 32px; overflow: hidden; padding: 0 10px;">
+            <div id="grid-instagram"></div>
         </div>
-
-        <script>
-            const iframeCalendario = document.getElementById('iframe-calendario');
-            
-            // URL base do calendário em modo AGENDA
-            const urlBase = "https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=America%2FAraguaina&showPrint=0&mode=AGENDA&showTabs=0&showNav=0&showDate=0&showCalendars=0&showTz=0&title=Riptor%20na%20Pista&showTitle=0&src=dml0b3JzYW50b3Njb250QGdtYWlsLmNvbQ&color=%23039be5";
-            
-            // Captura a data de hoje
-            const dataHoje = new Date();
-
-            // Formata no padrão Google (YYYYMMDD)
-            const formatarParaGoogle = (data) => {
-                const ano = data.getFullYear();
-                const mes = String(data.getMonth() + 1).padStart(2, '0');
-                const dia = String(data.getDate()).padStart(2, '0');
-                return `${ano}${mes}${dia}`;
-            };
-
-            // Injeta a data de hoje para forçar a lista a ocultar o passado
-            // O %2F é obrigatório para separar as datas sem quebrar o Iframe
-            const dataFormatada = formatarParaGoogle(dataHoje);
-            iframeCalendario.src = urlBase + `&dates=${dataFormatada}%2F${dataFormatada}`;
-        </script>
+        <a href="https://www.instagram.com/riptoresports/" target="_blank" class="btn-sigam-insta">
+            <img src="instagram.png" alt="" width="28" height="28">
+            Siga a Riptor no Instagram
+        </a>
+    </section>
 
     <!-- Seção de Pilotos -->
     <section id="pilotos" class="secao">
@@ -790,14 +813,16 @@
 
         <div class="grid-pilotos">
             <div class="card-piloto">
-                <h4>Bruno <p style="color: #FFD300">Castaldini</p></h4>
+                <h4>Bruno <span style="color: #FFD300">Castaldini</span></h4>
 
-                <!-- Novo Container da Imagem com Overlay -->
-                <div class="piloto-imagem-container">
-                    <img class="foto-piloto" src="BrunoCastaldini_Riptor.jpg" alt="Bruno Castaldini">
-                    
-                    <!-- Textos do Pop-up -->
-                    <div class="piloto-info-overlay">
+                <img class="foto-piloto" src="BrunoCastaldini_Riptor.jpg" loading="lazy" alt="Bruno Castaldini">
+                <ul class="piloto-destaques" aria-label="Principais conquistas">
+                    <li>🥇 Iron Man T2 (R5 Esports)</li>
+                    <li>🥇 Blancpain 2018 Cat.Prata (Buzzin Hornets)</li>
+                </ul>
+                <details class="piloto-perfil">
+                    <summary aria-label="Ver perfil de Bruno Castaldini">Ver perfil</summary>
+                    <div class="piloto-info">
                         <strong>🏆 Títulos:</strong>
                         <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
                             - 🥇 Iron Man T2 (R5 Esports)<br>
@@ -825,14 +850,14 @@
                         </p>
                         <strong>⚙️ Simuladores:</strong>
                         <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
-                            Lemans Ultimate <br>
+                            Le Mans Ultimate <br>
 			            </p>
 			            <strong>🛞 Carro Preferido:</strong>
                         <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
                             Porsche 911 GT3<br>
-                        </p>			
+                        </p>
                     </div>
-                </div>
+                </details>
                 <p style="margin-top: 15px;">
                     <a href="https://www.instagram.com/brunocastaldini_av/" target="_blank"><img src="instagram.png" height="40" width="40" alt="Instagram"></a> 
                     <a href="https://www.youtube.com/@brunocastaldini" target="_blank"><img src="youtube.png" height="40" width="40" alt="Youtube"></a>
@@ -842,14 +867,16 @@
 
 
             <div class="card-piloto">
-                <h4>Fernando <p style="color: #FFD300">Nask</p></h4>
+                <h4>Fernando <span style="color: #FFD300">Nask</span></h4>
 
-                <!-- Novo Container da Imagem com Overlay -->
-                <div class="piloto-imagem-container">
-                <img class="foto-piloto" src="FernandoNask_Riptor.jpg" alt="Fernando Nask">
-                    
-                    <!-- Textos do Pop-up -->
-                    <div class="piloto-info-overlay">
+                <img class="foto-piloto" src="FernandoNask_Riptor.jpg" loading="lazy" alt="Fernando Nask">
+                <ul class="piloto-destaques" aria-label="Principais conquistas">
+                    <li>🥇 Barsotini GT3 Series Cat. Silver (LM)</li>
+                    <li>🥈 1º All-Night (TMR)</li>
+                </ul>
+                <details class="piloto-perfil">
+                    <summary aria-label="Ver perfil de Fernando Nask">Ver perfil</summary>
+                    <div class="piloto-info">
                         <strong>🏆 Títulos:</strong>
                         <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
                             - 🥇 Barsotini GT3 Series Cat. Silver (LM)<br>
@@ -859,7 +886,7 @@
                         
                         <strong>⚙️ Simuladores:</strong>
                         <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
-                            Lemans Ultimate <br>
+                            Le Mans Ultimate <br>
 			    
                         </p>
 
@@ -867,9 +894,9 @@
                         <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
                             BMW M4 GT3
 			    
-                        </p>			
+                        </p>
                     </div>
-                </div>
+                </details>
 
                 <p style="margin-top: 15px;">
 
@@ -882,15 +909,17 @@
             </div>
 
             <div class="card-piloto">
-                <h4>Ícaro <p style="color: #FFD300">Albano</p></h4>
+                <h4>Ícaro <span style="color: #FFD300">Albano</span></h4>
                 
 
-                <!-- Novo Container da Imagem com Overlay -->
-                <div class="piloto-imagem-container">
-                    <img class="foto-piloto" src="IcaroAlbano_Riptor.jpg" alt="Ícaro Albano">
-                    
-                    <!-- Textos do Pop-up -->
-                    <div class="piloto-info-overlay">
+                <img class="foto-piloto" src="IcaroAlbano_Riptor.jpg" loading="lazy" alt="Ícaro Albano">
+                <ul class="piloto-destaques" aria-label="Principais conquistas">
+                    <li>🥇 Barsotini 12H GT3 Series Cat. Pro-Am (LM)</li>
+                    <li>🥇 Grid ACC 5° Temporada Cat. Pro (Renegados)</li>
+                </ul>
+                <details class="piloto-perfil">
+                    <summary aria-label="Ver perfil de Ícaro Albano">Ver perfil</summary>
+                    <div class="piloto-info">
                         <strong>🏆 Títulos:</strong>
                         <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
 							- 🥇 Barsotini 12H GT3 Series Cat. Pro-Am (LM)<br>
@@ -906,7 +935,7 @@
                         
                         <strong>⚙️ Simuladores:</strong>
                         <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
-                            Lemans Ultimate <br>
+                            Le Mans Ultimate <br>
 			    
                         </p>
 
@@ -914,9 +943,9 @@
                         <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
                             Mustang GT3
 			    
-                        </p>			
+                        </p>
                     </div>
-                </div>
+                </details>
 
                 <p style="margin-top: 15px;">
 		<a href="https://www.instagram.com/icaroalbano119/" target="_blank"><img src="instagram.png" height="40" width="40" alt="Instagram"></a>
@@ -926,14 +955,16 @@
             </div>
 
 	    <div class="card-piloto">
-                <h4>Lisandro <p style="color: #FFD300">Antonello</p></h4>
+                <h4>Lisandro <span style="color: #FFD300">Antonello</span></h4>
                 
-                <!-- Novo Container da Imagem com Overlay -->
-                <div class="piloto-imagem-container">
-                    <img class="foto-piloto" src="LisandroAntonello_Riptor.jpg" alt="Lisandro Antonello">
-                    
-                    <!-- Textos do Pop-up -->
-                    <div class="piloto-info-overlay">
+                <img class="foto-piloto" src="LisandroAntonello_Riptor.jpg" loading="lazy" alt="Lisandro Antonello">
+                <ul class="piloto-destaques" aria-label="Principais conquistas">
+                    <li>🥇 La Piazza GT3 Série A Cat. AM (Veteranos)</li>
+                    <li>🥇 La Piazza GT3 Série B Cat. Silver (Veteranos)</li>
+                </ul>
+                <details class="piloto-perfil">
+                    <summary aria-label="Ver perfil de Lisandro Antonello">Ver perfil</summary>
+                    <div class="piloto-info">
                         <strong>🏆 Títulos:</strong>
                         <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
                             - 🥇 La Piazza GT3 Série A Cat. AM (Veteranos)<br>
@@ -943,16 +974,16 @@
                         <strong>⚙️ Simuladores:</strong>
                         <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
                             Assetto Corsa Competizione <br>
-			   				Lemans Ultimate
+                            Le Mans Ultimate
                         </p>
 
 			<strong>🛞 Carro Preferido:</strong>
                         <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
                             Ferrari 296 GT3
 			    
-                        </p>			
+                        </p>
                     </div>
-                </div>
+                </details>
 
                 <p style="margin-top: 15px;">
 		            <a href="https://www.instagram.com/lisandro.r.a/" target="_blank"><img src="instagram.png" height="40" width="40" 						alt="Instagram"></a>
@@ -961,19 +992,21 @@
             </div>
 
             <div class="card-piloto">
-                <h4>Matheus <p style="color: #FFD300">Rodrigues</p></h4>
+                <h4>Matheus <span style="color: #FFD300">Rodrigues</span></h4>
 
-                <!-- Novo Container da Imagem com Overlay -->
-                <div class="piloto-imagem-container">
-                <img class="foto-piloto" src="Bumbata_Riptor.jpg" alt="Matheus Rodrigues">
-                    
-                    <!-- Textos do Pop-up -->
-                    <div class="piloto-info-overlay">
+                <img class="foto-piloto" src="Bumbata_Riptor.jpg" loading="lazy" alt="Matheus Rodrigues">
+                <ul class="piloto-destaques" aria-label="Principais conquistas">
+                    <li>🥇 Lemans First Challenge (Let's Go)</li>
+                    <li>🥇 2º La Piazza Hyper & GT3 Serie B Cat. PRO AM (Veteranos)</li>
+                </ul>
+                <details class="piloto-perfil">
+                    <summary aria-label="Ver perfil de Matheus Rodrigues">Ver perfil</summary>
+                    <div class="piloto-info">
                         <strong>🏆 Títulos:</strong>
                         <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
 							- 🥇 Lemans First Challenge (Let's Go)<br>
 							- 🥇 2º La Piazza Hyper & GT3 Serie B Cat. PRO AM (Veteranos)<br>
-							- 🥉 GT3 Lemans Ultimate Grupo B (RAV)<br>
+							- 🥉 GT3 Le Mans Ultimate Grupo B (RAV)<br>
                         </p>
                         
                         <strong>⚙️ Simuladores:</strong>
@@ -986,9 +1019,9 @@
                         <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
                             Ferrari 296 GT3
 			    
-                        </p>			
+                        </p>
                     </div>
-                </div>
+                </details>
 
                 <p style="margin-top: 15px;">
                 
@@ -1001,22 +1034,16 @@
             </div>
 
             <div class="card-piloto">
-                <h4>Rodrigo <p style="color: #FFD300">Da Rosa</p></h4>
+                <h4>Rodrigo <span style="color: #FFD300">Da Rosa</span></h4>
 
-                <!-- Novo Container da Imagem com Overlay -->
-                <div class="piloto-imagem-container">
-                <img class="foto-piloto" src="DaRosa_Riptor.jpg" alt="Rodrigo Da Rosa">
-                    
-                    <!-- Textos do Pop-up -->
-                    <div class="piloto-info-overlay">
-                        <!-- <strong>🏆 Títulos:</strong>
-                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
-                            - 🥇 Campeão(2026)
-                        </p>-->
+                <img class="foto-piloto" src="DaRosa_Riptor.jpg" loading="lazy" alt="Rodrigo Da Rosa">
+                <details class="piloto-perfil">
+                    <summary aria-label="Ver perfil de Rodrigo Da Rosa">Ver perfil</summary>
+                    <div class="piloto-info">
                         
                         <strong>⚙️ Simuladores:</strong>
                         <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
-                            Lemans Ultimate<br>
+                            Le Mans Ultimate<br>
 							iRacing<br>
 			    
                         </p>
@@ -1025,9 +1052,9 @@
                         <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
                             Ferrari 296 GT3
 			    
-                        </p>			
+                        </p>
                     </div>
-                </div>
+                </details>
 
                 <p style="margin-top: 15px;">
 
@@ -1040,22 +1067,16 @@
             </div>
 
             <div class="card-piloto">
-                <h4>Tiago <p style="color: #FFD300">Claudino</p></h4>
+                <h4>Tiago <span style="color: #FFD300">Claudino</span></h4>
 
-                <!-- Novo Container da Imagem com Overlay -->
-                <div class="piloto-imagem-container">
-                <img class="foto-piloto" src="tiagoclaudino_Riptor.jpg" alt="Tiago Claudino">
-                    
-                    <!-- Textos do Pop-up -->
-                    <div class="piloto-info-overlay">
-                        <!-- <strong>🏆 Títulos:</strong>
-                        <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
-                            - 🥇 Campeão(2026)
-                        </p>-->
+                <img class="foto-piloto" src="tiagoclaudino_Riptor.jpg" loading="lazy" alt="Tiago Claudino">
+                <details class="piloto-perfil">
+                    <summary aria-label="Ver perfil de Tiago Claudino">Ver perfil</summary>
+                    <div class="piloto-info">
                         
                         <strong>⚙️ Simuladores:</strong>
                         <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
-                            Lemans Ultimate<br>
+                            Le Mans Ultimate<br>
 							iRacing<br>
 			    
                         </p>
@@ -1064,9 +1085,9 @@
                         <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
                             BMW M4 GT3
 			    
-                        </p>			
+                        </p>
                     </div>
-                </div>
+                </details>
 
                 <p style="margin-top: 15px;">
 
@@ -1080,14 +1101,16 @@
 		
 			
             <div class="card-piloto">
-                <h4>Vitor <p style="color: #FFD300">Santos</p></h4>
+                <h4>Vitor <span style="color: #FFD300">Santos</span></h4>
                 
-                <!-- Novo Container da Imagem com Overlay -->
-                <div class="piloto-imagem-container">
-                <img class="foto-piloto" src="VitorSantos_Riptor.jpg" alt="Vitor Santos">
-                    
-                    <!-- Textos do Pop-up -->
-                    <div class="piloto-info-overlay">
+                <img class="foto-piloto" src="VitorSantos_Riptor.jpg" loading="lazy" alt="Vitor Santos">
+                <ul class="piloto-destaques" aria-label="Principais conquistas">
+                    <li>🥇 MR Nations Endurance Cup Cat. Gold (LM)</li>
+                    <li>🥇 3º La Piazza Doppio Giro Cat. PRO AM (Veteranos)</li>
+                </ul>
+                <details class="piloto-perfil">
+                    <summary aria-label="Ver perfil de Vitor Santos">Ver perfil</summary>
+                    <div class="piloto-info">
                         <strong>🏆 Títulos:</strong>
                         <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
                             - 🥇 MR Nations Endurance Cup Cat. Gold (LM) <br>
@@ -1101,7 +1124,7 @@
                         
                         <strong>⚙️ Simuladores:</strong>
                         <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
-                            Lemans Ultimate <br>
+                            Le Mans Ultimate <br>
 			    iRacing
                         </p>
 
@@ -1109,9 +1132,9 @@
                         <p style="color: #fff; margin: 5px 0 15px 0; font-size: 13px;">
                             BMW M4 GT3
 			    
-                        </p>			
+                        </p>
                     </div>
-                </div>
+                </details>
 
                 <p style="margin-top: 15px;">
 
